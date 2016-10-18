@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffee58"
+    tools:context="com.korbkenny.todolist.MainActivity">
+
+    <TextView
+        android:id="@+id/TitleHome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="GET-IT-DONE"
+        android:textSize="65sp"
+        android:textStyle="bold"
+        android:fontFamily="sans-serif-condensed"
+        android:gravity="center"
+        android:textColor="#000"
+        android:shadowDx="5"
+        android:shadowDy="5"
+        android:shadowRadius="14"
+        android:shadowColor="#616161"/>
+
+    <Button
+        android:id="@+id/AddList"
+        android:layout_width="350dp"
+        android:layout_height="70dp"
+        android:text="CREATE NEW LIST"
+        android:textSize="35sp"
+        android:textStyle="bold"
+        android:fontFamily="sans-serif-condensed"
+        android:layout_below="@id/TitleHome"
+        android:background="#f06292"
+        android:shadowColor="#ffffff"
+        android:shadowRadius="13"
+        android:shadowDy="0"
+        android:shadowDx="0"
+        android:layout_centerHorizontal="true"
+        />
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/RecyclerView"
+        android:layout_below="@id/AddList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </android.support.v7.widget.RecyclerView>
+
+
+
+
+</RelativeLayout>
