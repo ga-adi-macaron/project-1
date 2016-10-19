@@ -1,9 +1,12 @@
 package net.serkanbal.project1;
 
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,5 +36,19 @@ public class MainActivity extends AppCompatActivity {
         }
 
         mRecyclerViewList.setAdapter(new ListRecyclerAdapter(toDoList));
+
+        //Complete the FloatingActionButton onClick method to add a list item
+        FloatingActionButton fab = (FloatingActionButton)findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                builder.setTitle("Enter New To-do List Name");
+                builder.setMessage("This is the message");
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+        });
+
     }
 }
