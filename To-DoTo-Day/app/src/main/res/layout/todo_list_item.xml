@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="110dp"
+    android:padding="12dp"
+    android:background="#e0e0e0">
+
+    <TextView
+        android:id="@+id/list_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="To-Do List Title"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimaryDark"/>
+
+    <TextView
+        android:id="@+id/list_item_preview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sample List Item"
+        android:layout_below="@id/list_title"
+        android:layout_alignRight="@id/list_title" />
+
+    <Button
+        android:id="@+id/delete-button"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentRight="true"
+        android:background="@android:drawable/ic_menu_save"
+        android:layout_marginBottom="6dp"
+        android:backgroundTint="@android:color/holo_green_dark"/>
+
+    <Button
+        android:id="@+id/complete-button"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/delete-button"
+        android:background="@android:drawable/ic_menu_close_clear_cancel"
+        android:backgroundTint="@android:color/holo_red_light" />
+
+    <Button
+        android:id="@+id/priority"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_toLeftOf="@id/complete-button"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="24dp"
+        android:background="@android:drawable/ic_dialog_info"
+        android:backgroundTint="@color/colorPrimaryDark"/>
+
+</RelativeLayout>
