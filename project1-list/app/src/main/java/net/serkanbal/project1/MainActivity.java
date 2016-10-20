@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public long getItemId(int position) {
-                return 0;
+                return position;
             }
 
             @Override

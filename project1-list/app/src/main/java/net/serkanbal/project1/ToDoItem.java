@@ -5,6 +5,14 @@ package net.serkanbal.project1;
  */
 
 public class ToDoItem {
+    private String mItemTitle;
+    private String mItemDesc;
+
+    public ToDoItem(String itemTitle, String itemDesc) {
+        mItemTitle = itemTitle;
+        mItemDesc = itemDesc;
+    }
+
     public String getItemTitle() {
         return mItemTitle;
     }
@@ -20,14 +28,5 @@ public class ToDoItem {
     public void setItemDesc(String itemDesc) {
         mItemDesc = itemDesc;
     }
-
-    private String mItemTitle;
-    private String mItemDesc;
-
-    public ToDoItem(String itemTitle, String itemDesc) {
-        mItemTitle = itemTitle;
-        mItemDesc = itemDesc;
-    }
-
 
 }

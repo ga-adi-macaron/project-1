@@ -7,8 +7,14 @@
               android:padding="10dp" >
 
     <EditText
-        android:hint="Your To-Do List's Name"
-        android:id="@+id/editTextDialogUserInput"
+        android:hint="Item Title"
+        android:id="@+id/edititemtitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:hint="Item Description"
+        android:id="@+id/edititemdesc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
 
