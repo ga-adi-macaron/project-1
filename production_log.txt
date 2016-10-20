@@ -1,0 +1,10 @@
+10-18:
+
+Initial concept thoughts - create a lightweight, intuitive to-do list app with a splsh screen, a ListVIew of recently edited notes (actionable), a sidebar settings menu (this is where access to the full list of notes will be), a contrast colored FAB with both short and long press actions, checkboxes to mark items as "done" and lists as "accomplished" and marked for deletion in 5 days. 
+
+Item Features (by section):
+
+        Recently Edited Notes - the (1-5) most recent notes made. Actionable to edit or mark for deletion.
+                    Sub section for notes that are due to be deleted.
+        
+        Sidebar Menu - Settings for push notification reminders, access to 'My Lists'(?), 
