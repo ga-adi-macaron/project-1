@@ -2,10 +2,10 @@ package net.serkanbal.project1;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +16,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -25,13 +24,15 @@ public class MainActivity extends AppCompatActivity {
     ListView mToDoListListView;
     List<ToDoList> mToDoList;
     FloatingActionButton mFab;
+    Singleton mySingleton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mToDoList = new ArrayList<>();
+        mySingleton = Singleton.getInstance();
+        mToDoList = mySingleton.getLists();
 
         mToDoListAdapter = new BaseAdapter() {
             @Override
@@ -57,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 TextView textView = (TextView) convertView.findViewById(android.R.id.text1);
-                textView.setText(mToDoList.get(position).getToDoList());
+                textView.setText(mToDoList.get(position).getToDoListName());
 
                 return convertView;
             }
@@ -118,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
                 builder.setTitle("Please Confirm:")
-                        .setMessage("Do you really want to delete: " + mToDoList.get(position).getToDoList()+"?")
+                        .setMessage("Do you really want to delete: " + mToDoList.get(position).getToDoListName()+"?")
                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
@@ -142,6 +143,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(MainActivity.this, TodoitemActivity.class);
+                intent.putExtra("POSITION", position);
                 startActivity(intent);
             }
         });

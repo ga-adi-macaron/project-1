@@ -1,6 +1,7 @@
 package net.serkanbal.project1;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
@@ -15,7 +16,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class TodoitemActivity extends AppCompatActivity {
@@ -23,13 +23,18 @@ public class TodoitemActivity extends AppCompatActivity {
     ListView mItemView;
     List<ToDoItem> mItemList;
     FloatingActionButton mItemFab;
+    Singleton mySingleton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_todoitem);
 
-        mItemList = new ArrayList<>();
+        Intent intent = getIntent();
+        int position = intent.getIntExtra("POSITION", 0);
+
+        mySingleton = Singleton.getInstance();
+        mItemList = mySingleton.getListByIndex(position).getToDoItems();
 
         mItemAdapter = new BaseAdapter() {
             @Override
@@ -92,6 +97,7 @@ public class TodoitemActivity extends AppCompatActivity {
 
                                         if (!inputTitleUser.isEmpty() && !inputDescUser.isEmpty()) {
                                             mItemList.add(new ToDoItem(inputTitleUser, inputDescUser));
+
                                             mItemAdapter.notifyDataSetChanged();
                                         } else {
                                             inputTitle.setError("Be logical!");
