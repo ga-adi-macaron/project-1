@@ -52,25 +52,6 @@
         android:layout_marginTop="4sp"
         android:background="#fffad8"
         android:hint="Put a short description here"/>
-    <Button
-        android:id="@+id/confirmEntryButt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/descriptInput"
 
-        android:layout_alignLeft="@id/titleInput"
-        android:background="#00000000"
-        android:text="Add list"
-        android:textColor="#8c7b05"/>
-    <Button
-        android:id="@+id/cancelButt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/descriptInput"
-        android:layout_alignRight="@id/titleInput"
-        android:background="#00000000"
-        android:text="Cancel"
-        android:textColor="#8c7b05"
-        />
 
 </RelativeLayout>

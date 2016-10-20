@@ -11,8 +11,14 @@ public class ErrandsEncapsulator {
     private ArrayList<Errands> mErrandList;
 
     public ErrandsEncapsulator(String title, String description){//ToDo: If we want user to initiate list with errands inside of it already, we can add a list as Parameter.
-            mTitle= title;
+        mTitle= title;
+        if(description.equals("")){
+            mDescription=title;
+        }else{
             mDescription=description;
+
+        }
+        MasterLister.appendToDoList(this);
     }
 
 

@@ -32,8 +32,8 @@ public class MainRecyclerAdapter extends RecyclerView.Adapter<ListTitleHolder> {
 
         RelativeLayout relativeLayout =(RelativeLayout)holder.itemView.findViewById(R.id.superlistitem);
 
-        titleView.setText("This will become dynamic, is Title");
-        descriptView.setText("This will become dynamic, is descript");
+        titleView.setText(mErrandsEncapsulatorList.get(position).getTitle());
+        descriptView.setText(mErrandsEncapsulatorList.get(position).getDescription());
         relativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
