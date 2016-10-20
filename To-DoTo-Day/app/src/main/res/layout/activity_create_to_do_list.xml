@@ -42,4 +42,25 @@
         android:layout_below="@id/priority_label"
         android:layout_marginTop="8dp"/>
 
+    <Button
+        android:id="@+id/save_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/priority"
+        android:text="save" />
+
+    <Button
+        android:id="@+id/clear_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/priority"
+        android:layout_alignParentRight="true"
+        android:text="clear"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/item_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/save_button"/>
+
 </RelativeLayout>

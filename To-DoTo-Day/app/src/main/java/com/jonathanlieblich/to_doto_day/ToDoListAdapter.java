@@ -40,7 +40,6 @@ public class ToDoListAdapter extends RecyclerView.Adapter<ToDoListViewHolder> {
     public void onBindViewHolder(final ToDoListViewHolder holder, final int position) {
         final ToDoList newList = mToDoLister.get(position);
 
-        final String TITLE = "List Title";
         final List<ToDoItem> listItems;
 
         View.OnClickListener onClickListener = new View.OnClickListener() {
@@ -49,17 +48,18 @@ public class ToDoListAdapter extends RecyclerView.Adapter<ToDoListViewHolder> {
                 switch(v.getId()) {
                     case(R.id.edit_button):
                         Intent intent = new Intent(holder.mEditButton.getContext(), CreateToDoListActivity.class);
-                        intent.putExtra(TITLE, newList.getListTitle());
+                        intent.putExtra("List Title", newList.getListTitle());
                         holder.mEditButton.getContext().startActivity(intent);
                         break;
                     case(R.id.delete_button):
-                        //Delete this list
+                        mToDoLister.remove(position);
+                        notifyItemChanged(position);
                         break;
                     case(R.id.list_info):
                         //Open an alert dialog (list name, priority level, close button)
                         AlertDialog.Builder listInfo = new AlertDialog.Builder(holder.mToDoListLayout.getContext());
                         listInfo.setTitle(mToDoLister.get(position).getListTitle());
-                        listInfo.setItems(Integer.toString(newList.getListPriority()));
+                        listInfo.show();
                         break;
                     case(R.id.recycler_list):
                         //Alert dialog with recycler view of list items

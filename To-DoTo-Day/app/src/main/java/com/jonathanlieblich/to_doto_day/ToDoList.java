@@ -19,6 +19,14 @@ public class ToDoList {
         mToDoItems = toDoItems;
     }
 
+    public void addNewItem(String title, String description) {
+        mToDoItems.add(new ToDoItem(title, description));
+    }
+
+    public void addItem(ToDoItem item) {
+        mToDoItems.add(item);
+    }
+
     public List getToDoItems() {
         return mToDoItems;
     }
