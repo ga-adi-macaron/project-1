@@ -1,57 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content" android:layout_height="wrap_content"
-    android:background="#f4e680">
+    android:background="#8f45e7a9"
+    android:paddingBottom="20sp">
 
     <TextView
         android:id="@+id/alertTitle"
         android:layout_width="250sp"
         android:layout_height="wrap_content"
         android:text="New list Creation"
-        android:textColor="#000"
+        android:textColor="#05784c"
         android:textSize="20sp"
         android:gravity="center"
         android:layout_centerHorizontal="true"/>
-    <TextView
-        android:id="@+id/listTitPrompt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/alertTitle"
-        android:text="Title: "
-        android:textColor="#000"
-        android:textSize="20sp"
-        android:paddingLeft="10sp"
-        android:paddingTop="7sp"/>
+
     <EditText
         android:id="@+id/titleInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Put name of list here"
-        android:layout_alignTop="@id/listTitPrompt"
-        android:layout_alignBottom="@id/listTitPrompt"
-        android:layout_toRightOf="@id/listTitPrompt"
-        android:layout_marginRight="20sp"
-        android:background="#fffad8"/>
-    <TextView
-        android:id="@+id/descriptPrompt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/listTitPrompt"
-        android:text="Details: "
-        android:textColor="#000"
-        android:textSize="15sp"
-        android:paddingTop="5sp"
-        android:paddingBottom="5sp"/>
+        android:layout_below="@id/alertTitle"
+        android:hint="name"
+        android:layout_margin="8sp"
+        android:paddingTop="10sp"
+        android:paddingBottom="10sp"
+        android:background="#9ae0f1df"/>
+
     <EditText
         android:id="@+id/descriptInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@id/descriptPrompt"
         android:layout_alignLeft="@id/titleInput"
         android:layout_alignRight="@id/titleInput"
-        android:layout_marginTop="4sp"
-        android:background="#fffad8"
-        android:hint="Put a short description here"/>
+        android:layout_marginTop="8sp"
+        android:paddingBottom="10sp"
+        android:paddingTop="10sp"
+        android:background="#9ae0f1df"
+        android:layout_below="@id/titleInput"
+        android:hint="description"/>
 
 
 </RelativeLayout>
