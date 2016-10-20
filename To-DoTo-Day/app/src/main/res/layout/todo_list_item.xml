@@ -1,55 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/recycler_list"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="110dp"
+    android:layout_margin="8dp"
     android:padding="12dp"
-    android:background="#e0e0e0">
+    android:background="#ffffff"
+    android:elevation="6dp">
 
     <TextView
         android:id="@+id/list_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="To-Do List Title"
-        android:textSize="18sp"
+        android:textSize="24sp"
         android:textStyle="bold"
-        android:textColor="@color/colorPrimaryDark"/>
+        android:textColor="#000000"/>
 
     <TextView
         android:id="@+id/list_item_preview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sample List Item"
+        android:text="Sample List Item\nSample List Item\nSample List Item"
         android:layout_below="@id/list_title"
         android:layout_alignRight="@id/list_title" />
 
-    <Button
-        android:id="@+id/delete-button"
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/edit_button"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_alignParentRight="true"
-        android:background="@android:drawable/ic_menu_save"
+        android:background="@android:drawable/ic_menu_edit"
         android:layout_marginBottom="6dp"
-        android:backgroundTint="@android:color/holo_green_dark"/>
+        android:backgroundTint="#f57f17" />
 
     <Button
-        android:id="@+id/complete-button"
+        android:id="@+id/delete_button"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_alignParentRight="true"
-        android:layout_below="@id/delete-button"
-        android:background="@android:drawable/ic_menu_close_clear_cancel"
-        android:backgroundTint="@android:color/holo_red_light" />
+        android:layout_below="@id/edit_button"
+        android:background="@android:drawable/ic_delete" />
 
-    <Button
-        android:id="@+id/priority"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_toLeftOf="@id/complete-button"
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/list_info"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_toLeftOf="@id/edit_button"
         android:layout_centerVertical="true"
         android:layout_marginRight="24dp"
-        android:background="@android:drawable/ic_dialog_info"
-        android:backgroundTint="@color/colorPrimaryDark"/>
+        android:src="@android:drawable/ic_dialog_info"
+        android:tint="@color/colorPrimaryDark"/>
 
 </RelativeLayout>

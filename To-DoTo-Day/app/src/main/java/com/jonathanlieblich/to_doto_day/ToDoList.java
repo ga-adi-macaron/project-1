@@ -38,4 +38,12 @@ public class ToDoList {
     public void listComplete() {
         mListComplete = !isListComplete();
     }
+
+    public int getListPriority() {
+        return mListPriority;
+    }
+
+    public void setListPriority(int priority) {
+        mListPriority = priority;
+    }
 }
