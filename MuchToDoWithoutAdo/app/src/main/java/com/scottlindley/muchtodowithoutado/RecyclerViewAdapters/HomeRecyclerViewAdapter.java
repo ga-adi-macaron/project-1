@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.scottlindley.muchtodowithoutado.Activities.ToDoListActivity;
+import com.scottlindley.muchtodowithoutado.JavaObjects.OnSwipeTouchListener;
 import com.scottlindley.muchtodowithoutado.JavaObjects.ToDoList;
 import com.scottlindley.muchtodowithoutado.JavaObjects.ToDoListCollection;
 import com.scottlindley.muchtodowithoutado.R;
@@ -42,7 +43,7 @@ public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeScreenView
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(mContext, ToDoListActivity.class);
-                intent.putExtra(POSITION_NUMBER, position);
+                intent.putExtra(POSITION_NUMBER, holder.getAdapterPosition());
                 mContext.startActivity(intent);
             }
         });
@@ -50,10 +51,14 @@ public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeScreenView
         holder.mRelativeLayout.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
-                mHomeList.remove(position);
-                notifyItemRemoved(position);
+                mHomeList.remove(holder.getAdapterPosition());
+                notifyItemRemoved(holder.getAdapterPosition());
                 return true;
             }
+        });
+
+        holder.mRelativeLayout.setOnTouchListener(new OnSwipeTouchListener(mContext){
+
         });
     }
 
