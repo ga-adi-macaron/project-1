@@ -2,6 +2,7 @@ package shuvalov.nikita.todoornottodo;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -19,7 +20,8 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private Button addListButt;
-
+    private LinearLayoutManager linearLayoutManager;
+    public static final int RETRIEVE_CONTENT = 2369;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         addListButt = (Button) findViewById(R.id.addlist);
         recyclerView = (RecyclerView)findViewById(R.id.recyclerview);
         MasterLister masterLister = MasterLister.getInstance();
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(MainActivity.this, LinearLayoutManager.VERTICAL, false);
+        linearLayoutManager = new LinearLayoutManager(MainActivity.this, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(linearLayoutManager);
 
         addListButt.setOnClickListener(new View.OnClickListener() {
@@ -47,7 +49,6 @@ public class MainActivity extends AppCompatActivity {
                         EditText descText = (EditText) d.findViewById(R.id.descriptInput);
 
                         new ErrandsEncapsulator(titleText.getText().toString(), descText.getText().toString());
-
                     }
                 })
                         .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -66,4 +67,5 @@ public class MainActivity extends AppCompatActivity {
 
         recyclerView.setAdapter(new MainRecyclerAdapter(masterLister.retriveToDoLists()));
     }
+
 }

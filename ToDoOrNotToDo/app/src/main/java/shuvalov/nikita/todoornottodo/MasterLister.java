@@ -27,4 +27,7 @@ public class MasterLister {
     private MasterLister() {
         mMasterList= new ArrayList<>();
     }
+    public static ErrandsEncapsulator getErrEncapInPosition(int position){
+        return mMasterList.get(position);
+    }
 }

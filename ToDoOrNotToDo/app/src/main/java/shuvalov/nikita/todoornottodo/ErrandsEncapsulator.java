@@ -18,6 +18,7 @@ public class ErrandsEncapsulator {
             mDescription=description;
 
         }
+        mErrandList = new ArrayList<>();
         MasterLister.appendToDoList(this);
     }
 
@@ -40,6 +41,10 @@ public class ErrandsEncapsulator {
 
     public void appendErrand(Errands errand){
         mErrandList.add(errand);
+    }
+
+    public ArrayList<Errands> getErrandsList(){
+        return mErrandList;
     }
 
 }

@@ -1,5 +1,6 @@
 package shuvalov.nikita.todoornottodo;
 
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,7 +27,7 @@ public class MainRecyclerAdapter extends RecyclerView.Adapter<ListTitleHolder> {
     }
 
     @Override
-    public void onBindViewHolder(ListTitleHolder holder, int position) {
+    public void onBindViewHolder(ListTitleHolder holder, final int position) {
         TextView titleView = (TextView) holder.itemView.findViewById(R.id.listTitle);
         TextView descriptView = (TextView) holder.itemView.findViewById(R.id.descript);
 
@@ -37,6 +38,9 @@ public class MainRecyclerAdapter extends RecyclerView.Adapter<ListTitleHolder> {
         relativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), SubListActivity.class);
+                intent.putExtra("Position", position);
+                v.getContext().startActivity(intent);
                 Toast.makeText(v.getContext(), "This is clickable", Toast.LENGTH_SHORT).show();
             }
         });
