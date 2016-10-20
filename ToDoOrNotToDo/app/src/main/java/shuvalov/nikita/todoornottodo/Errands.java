@@ -6,7 +6,9 @@ package shuvalov.nikita.todoornottodo;
 
 public class Errands {
     public String mText;
-    public Errands(String text){
-        mText = text;
-    }
+    public Errands(String text){mText = text;}
+
+    public String getText() {return mText;}
+
+    public void setText(String text) {mText = text;}
 }

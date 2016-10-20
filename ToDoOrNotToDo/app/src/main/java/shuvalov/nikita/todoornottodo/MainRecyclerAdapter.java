@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -33,7 +34,12 @@ public class MainRecyclerAdapter extends RecyclerView.Adapter<ListTitleHolder> {
 
         titleView.setText("This will become dynamic, is Title");
         descriptView.setText("This will become dynamic, is descript");
-        RelativeLayout
+        relativeLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(v.getContext(), "This is clickable", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override

@@ -6,10 +6,15 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private Button addListButt;
+    private List<ErrandsEncapsulator> superList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
         addListButt = (Button) findViewById(R.id.addlist);
         recyclerView = (RecyclerView)findViewById(R.id.recyclerview);
+        superList = new ArrayList<>();
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(MainActivity.this, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(linearLayoutManager);
 
@@ -26,8 +32,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                Toast.makeText(MainActivity.this, "This is gonna open a dialog", Toast.LENGTH_SHORT).show();
             }
         });
 
+        for (int i = 0; i < 20; i++) {
+            superList.add(new ErrandsEncapsulator("This is only a test", "This is a test of the emergency response system."));
+        }
+        recyclerView.setAdapter(new MainRecyclerAdapter(superList));
     }
 }

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content" android:layout_height="wrap_content"
+    android:background="#f4e680">
+
+    <TextView
+        android:id="@+id/alertTitle"
+        android:layout_width="250sp"
+        android:layout_height="wrap_content"
+        android:text="New list Creation"
+        android:textColor="#000"
+        android:textSize="20sp"
+        android:gravity="center"/>
+    <TextView
+        android:id="@+id/listTitPrompt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/alertTitle"/>
+
+</RelativeLayout>

@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class ErrandsEncapsulator {
     private String mTitle, mDescription;
-    private ArrayList<Errands> errandList;
+    private ArrayList<Errands> mErrandList;
 
     public ErrandsEncapsulator(String title, String description){//ToDo: If we want user to initiate list with errands inside of it already, we can add a list as Parameter.
         mDescription = description;
@@ -31,5 +31,8 @@ public class ErrandsEncapsulator {
         return mDescription;
     }
 
+    public void appendErrand(Errands errand){
+        mErrandList.add(errand);
+    }
 
 }
