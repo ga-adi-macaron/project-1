@@ -11,9 +11,10 @@ public class ErrandsEncapsulator {
     private ArrayList<Errands> mErrandList;
 
     public ErrandsEncapsulator(String title, String description){//ToDo: If we want user to initiate list with errands inside of it already, we can add a list as Parameter.
-        mDescription = description;
-        mTitle = title;
+            mTitle= title;
+            mDescription=description;
     }
+
 
     public void setTitle(String title) { //ToDo:Allow user to edit already made list names/descriptions.
         mTitle = title;

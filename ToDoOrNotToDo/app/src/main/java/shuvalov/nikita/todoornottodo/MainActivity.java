@@ -14,7 +14,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private Button addListButt;
-    private List<ErrandsEncapsulator> superList;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
         addListButt = (Button) findViewById(R.id.addlist);
         recyclerView = (RecyclerView)findViewById(R.id.recyclerview);
-        superList = new ArrayList<>();
+        MasterLister masterLister = MasterLister.getInstance();
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(MainActivity.this, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(linearLayoutManager);
 
@@ -37,8 +37,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
         for (int i = 0; i < 20; i++) {
-            superList.add(new ErrandsEncapsulator("This is only a test", "This is a test of the emergency response system."));
+            masterLister.appendToDoList(new ErrandsEncapsulator("This is only a test", "This is a test of the emergency response system."));
         }
-        recyclerView.setAdapter(new MainRecyclerAdapter(superList));
+        recyclerView.setAdapter(new MainRecyclerAdapter(masterLister.retriveToDoLists()));
     }
 }
