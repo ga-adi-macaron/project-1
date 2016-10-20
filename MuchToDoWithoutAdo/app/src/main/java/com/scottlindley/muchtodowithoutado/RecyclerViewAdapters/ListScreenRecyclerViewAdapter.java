@@ -33,18 +33,18 @@ public class ListScreenRecyclerViewAdapter extends RecyclerView.Adapter<ListScre
 
     @Override
     public void onBindViewHolder(final ListScreenViewHolder holder, final int position) {
-        holder.mItemName.setText(mItems.get(position).mItemName);
-        holder.mItemDescription.setText(mItems.get(position).mItemDescription);
-        holder.mCheckBox.setChecked(mItems.get(position).mIsChecked);
+        holder.mItemName.setText(mItems.get(holder.getAdapterPosition()).mItemName);
+        holder.mItemDescription.setText(mItems.get(holder.getAdapterPosition()).mItemDescription);
+        holder.mCheckBox.setChecked(mItems.get(holder.getAdapterPosition()).mIsChecked);
         holder.mCheckBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (!mItems.get(position).mIsChecked) {
-                    mItems.get(position).mIsChecked = true;
-                    notifyItemChanged(position);
+                if (!mItems.get(holder.getAdapterPosition()).mIsChecked) {
+                    mItems.get(holder.getAdapterPosition()).mIsChecked = true;
+                    notifyItemChanged(holder.getAdapterPosition());
                 } else {
-                    mItems.get(position).mIsChecked = false;
-                    notifyItemChanged(position);
+                    mItems.get(holder.getAdapterPosition()).mIsChecked = false;
+                    notifyItemChanged(holder.getAdapterPosition());
                 }
             }
         });
@@ -52,8 +52,8 @@ public class ListScreenRecyclerViewAdapter extends RecyclerView.Adapter<ListScre
         holder.mRelativeLayout.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
-                mItems.remove(position);
-                notifyItemRemoved(position);
+                mItems.remove(holder.getAdapterPosition());
+                notifyItemRemoved(holder.getAdapterPosition());
                 return true;
             }
         });

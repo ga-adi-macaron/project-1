@@ -14,10 +14,8 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.EditText;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,6 +27,7 @@ import com.scottlindley.muchtodowithoutado.RecyclerViewAdapters.HomeRecyclerView
 
 public class HomeActivity extends AppCompatActivity {
     private TextView mWelcomeText;
+    private TextView mSplashText;
     private FloatingActionButton mFloatingActionButton;
     private RecyclerView mRecyclerView;
     public ToDoListCollection mHomeLists;
@@ -140,31 +139,15 @@ public class HomeActivity extends AppCompatActivity {
 
     public void initializeWelcomeText(){
         mWelcomeText = (TextView)findViewById(R.id.welcome_text);
+        mSplashText = (TextView)findViewById(R.id.home_splash);
         if(mHomeLists.getLists().isEmpty()){
-            mWelcomeText.setText("Add a new ToDo list to get started!");
-            mWelcomeText.setTextSize(34);
-            mWelcomeText.setTextColor(Color.WHITE);
-
-            RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(
-                    ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-            layoutParams.addRule(RelativeLayout.CENTER_IN_PARENT);
-
-            mWelcomeText.setLayoutParams(layoutParams);
-
+            mSplashText.setVisibility(View.VISIBLE);
 
             mFloatingActionButton.setBackgroundTintList(ColorStateList.valueOf(Color.rgb(225,253,240)));
             mFloatingActionButton.setImageResource(R.drawable.ic_add_black_24dp);
 
         }else{
-            mWelcomeText.setText("ToDo Lists");
-            mWelcomeText.setTextColor(Color.WHITE);
-
-
-            RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(
-                    ViewGroup.LayoutParams.MATCH_PARENT, 250);
-            layoutParams.addRule(RelativeLayout.CENTER_HORIZONTAL);
-
-            mWelcomeText.setLayoutParams(layoutParams);
+            mSplashText.setVisibility(View.INVISIBLE);
 
             mFloatingActionButton.setBackgroundTintList(
                     ColorStateList.valueOf(getResources().getColor(R.color.colorAccent)));

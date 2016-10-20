@@ -27,6 +27,7 @@ public class ToDoListActivity extends AppCompatActivity {
     private int mPositionNumber;
     private RecyclerView mRecyclerView;
     private TextView mListName;
+    private TextView mSplashText;
     private FloatingActionButton mFloatingActionButton;
     private ToDoListCollection mListData;
 
@@ -66,13 +67,16 @@ public class ToDoListActivity extends AppCompatActivity {
         } else {
             mRecyclerView.setAdapter(new ListScreenRecyclerViewAdapter(mPositionNumber));
         }
+
+        addOrRemoveSplashText();
+
     }
 
     public void setFloatingActionButtonClickListener() {
         mFloatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(view.getContext());
+                final AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(view.getContext());
                 LayoutInflater inflater = LayoutInflater.from(view.getContext());
                 View dialogView = (inflater.inflate(R.layout.add_list_item_dialog, null));
                 dialogBuilder.setView(dialogView);
@@ -93,6 +97,13 @@ public class ToDoListActivity extends AppCompatActivity {
                 });
                 final AlertDialog dialog = dialogBuilder.create();
                 dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
+
+                dialogBuilder.setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialog.dismiss();
+                    }
+                });
                 dialog.setOnShowListener(new DialogInterface.OnShowListener() {
                     @Override
                     public void onShow(DialogInterface dialogInterface) {
@@ -142,10 +153,12 @@ public class ToDoListActivity extends AppCompatActivity {
                                             mRecyclerView.getAdapter().notifyItemChanged(mPositionNumber);
                                             break;
                                     }
+                                    addOrRemoveSplashText();
                                     dialog.dismiss();
                                 }
-                                    }
+                            }
                         });
+
                     }
 
                 });
@@ -182,7 +195,20 @@ public class ToDoListActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    public void onPostResume() {
+        addOrRemoveSplashText();
+        super.onPostResume();
+    }
 
+    public void addOrRemoveSplashText() {
+        mSplashText = (TextView)findViewById(R.id.list_splash);
+        if (mListData.getLists().get(mPositionNumber).getItems().isEmpty()) {
+            mSplashText.setVisibility(View.VISIBLE);
+        } else {
+            mSplashText.setVisibility(View.INVISIBLE);
+        }
+    }
 }
 
 

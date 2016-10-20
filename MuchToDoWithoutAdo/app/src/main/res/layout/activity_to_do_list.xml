@@ -10,6 +10,7 @@
     tools:context="com.scottlindley.muchtodowithoutado.Activities.ToDoListActivity">
 
     <RelativeLayout
+        android:id="@+id/list_item_relative_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <TextView
@@ -23,6 +24,16 @@
             android:gravity="center"
             android:layout_marginBottom="16dp"
             android:textColor="@color/colorPrimary"/>
+        <TextView
+            android:id="@+id/list_splash"
+            android:layout_width="match_parent"
+            android:layout_height="240dp"
+            android:text="Add items to your list and get things done!"
+            android:textSize="34dp"
+            android:gravity="center"
+            android:textColor="#ffffff"
+            android:layout_centerInParent="true"
+            android:layout_margin="16dp"/>
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/items_list"
