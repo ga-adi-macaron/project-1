@@ -13,8 +13,6 @@ public class ToDoList {
     public ToDoList(String name) {
         mName = name;
         mItems = new ArrayList<>();
-
-
     }
 
     public String getName() {

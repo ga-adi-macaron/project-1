@@ -37,13 +37,22 @@ public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeScreenView
 
     @Override
     public void onBindViewHolder(final HomeScreenViewHolder holder, final int position) {
-        holder.getTextView().setText(mHomeList.get(position).getName());
-        holder.getTextView().setOnClickListener(new View.OnClickListener() {
+        holder.mHomeListName.setText(mHomeList.get(position).getName());
+        holder.mRelativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(mContext, ToDoListActivity.class);
                 intent.putExtra(POSITION_NUMBER, position);
                 mContext.startActivity(intent);
+            }
+        });
+
+        holder.mRelativeLayout.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                mHomeList.remove(position);
+                notifyItemRemoved(position);
+                return true;
             }
         });
     }

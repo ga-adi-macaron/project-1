@@ -1,5 +1,6 @@
 package com.scottlindley.muchtodowithoutado.RecyclerViewAdapters;
 
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,16 +26,17 @@ public class ListScreenRecyclerViewAdapter extends RecyclerView.Adapter<ListScre
 
     @Override
     public ListScreenViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        inflater.inflate(R.layout.list_item_layout, null);
-        return  new ListScreenViewHolder(parent);
+        View returnView = LayoutInflater.from(parent.getContext()).inflate(
+                R.layout.list_item_layout, parent, false);
+        return  new ListScreenViewHolder(returnView);
     }
 
     @Override
     public void onBindViewHolder(final ListScreenViewHolder holder, final int position) {
-        holder.getItemName().setText(mItems.get(position).getItemName());
-        holder.getItemDescription().setText(mItems.get(position).getItemDescription());
-        holder.getCheckBox().setOnClickListener(new View.OnClickListener() {
+        holder.mItemName.setText(mItems.get(position).mItemName);
+        holder.mItemDescription.setText(mItems.get(position).mItemDescription);
+        holder.mCheckBox.setChecked(mItems.get(position).mIsChecked);
+        holder.mCheckBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (!mItems.get(position).mIsChecked) {
@@ -46,14 +48,37 @@ public class ListScreenRecyclerViewAdapter extends RecyclerView.Adapter<ListScre
                 }
             }
         });
-        if(holder.getCheckBox().isChecked()){
-            holder.getCheckBox().setChecked(false);
-            holder.getItemName().setAlpha(1.0f);
-            holder.getItemDescription().setAlpha(1.0f);
-        }else if(!holder.getCheckBox().isChecked()){
-            holder.getCheckBox().setChecked(true);
-            holder.getItemName().setAlpha(0.5f);
-            holder.getItemDescription().setAlpha(0.5f);
+
+        holder.mRelativeLayout.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                mItems.remove(position);
+                notifyItemRemoved(position);
+                return true;
+            }
+        });
+
+
+        if(!holder.mCheckBox.isChecked()){
+            holder.mCheckBox.setChecked(false);
+            holder.mItemName.setAlpha(1.0f);
+            holder.mItemDescription.setAlpha(1.0f);
+        }else if(holder.mCheckBox.isChecked()){
+            holder.mCheckBox.setChecked(true);
+            holder.mItemName.setAlpha(0.4f);
+            holder.mItemDescription.setAlpha(0.4f);
+        }
+
+        switch (mItems.get(position).mPriority){
+            case 0:
+                holder.mItemName.setTextColor(Color.rgb(69,69,69));
+                break;
+            case 1:
+                holder.mItemName.setTextColor(Color.rgb(214,153,2));
+                break;
+            case 2:
+                holder.mItemName.setTextColor(Color.rgb(195,0,0));
+                break;
         }
     }
 

@@ -1,15 +1,23 @@
 package com.scottlindley.muchtodowithoutado.Activities;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.scottlindley.muchtodowithoutado.JavaObjects.ToDo;
 import com.scottlindley.muchtodowithoutado.JavaObjects.ToDoListCollection;
 import com.scottlindley.muchtodowithoutado.R;
 import com.scottlindley.muchtodowithoutado.RecyclerViewAdapters.ListScreenRecyclerViewAdapter;
@@ -32,19 +40,19 @@ public class ToDoListActivity extends AppCompatActivity {
         Intent receivedIntent = getIntent();
         mPositionNumber = receivedIntent.getIntExtra(POSITION_NUMBER, -1);
 
-        setFloatingActionButtonClickListener();
-
         mRecyclerView = (RecyclerView)findViewById(R.id.items_list);
         mListName = (TextView)findViewById(R.id.list_name);
         mFloatingActionButton = (FloatingActionButton)findViewById(R.id.list_floating_action_button);
         mListData = ToDoListCollection.getInstance();
+
+        setFloatingActionButtonClickListener();
 
         if(mPositionNumber==-1){
             /*
             If we didn't receive a position number, then it must have been a newly created list.
             Meaning the list we're working with is at the end of the ArrayList.
              */
-            Log.d("IN TODOLIST ACTIVITY", "onCreate: "+mListData.getLists().size());
+            mPositionNumber = mListData.getLists().size()-1;
             mListName.setText(mListData.getLists().get(mListData.getLists().size()-1).getName());
         }else{
             //Else, pull the name of the list from the selected index on the home screen
@@ -65,7 +73,100 @@ public class ToDoListActivity extends AppCompatActivity {
         mFloatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                
+                AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(view.getContext());
+                LayoutInflater inflater = LayoutInflater.from(view.getContext());
+                View dialogView = (inflater.inflate(R.layout.add_list_item_dialog, null));
+                dialogBuilder.setView(dialogView);
+                final EditText itemName = (EditText)dialogView.findViewById(R.id.new_todo);
+                itemName.requestFocus();
+                InputMethodManager inputMethodManager = 
+                final EditText itemDescription = (EditText)dialogView.findViewById(R.id.details);
+                final RadioButton lowPriority = (RadioButton)dialogView.findViewById(R.id.low_priority);
+                final RadioButton mediumPriority = (RadioButton)dialogView.findViewById(R.id.medium_priority);
+                final RadioButton highPriority = (RadioButton)dialogView.findViewById(R.id.high_priority);
+
+                setRadioButtonClickListeners(lowPriority, mediumPriority, highPriority);
+
+                dialogBuilder.setPositiveButton("okay", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        if(itemName.getText().toString().equals("")){
+                            itemDescription.setError("Name cannot be blank");
+                            Toast.makeText(ToDoListActivity.this, "Name cannot be blank", Toast.LENGTH_SHORT).show();
+                        }else{
+                            if(itemDescription.getText().toString().equals("")){
+                                mListData.getLists().get(mPositionNumber).getItems().add(
+                                        new ToDo(itemName.getText().toString(), ""));
+                                mRecyclerView.getAdapter().notifyItemChanged(
+                                        mListData.getLists().get(mPositionNumber).getItems().size()-1);
+                            }else{
+                                mListData.getLists().get(mPositionNumber).getItems().add(
+                                        new ToDo(itemName.getText().toString(),
+                                                itemDescription.getText().toString())
+                                );
+                                mRecyclerView.getAdapter().notifyItemChanged(
+                                        mListData.getLists().get(mPositionNumber).getItems().size()-1);
+                            }
+                            int priority;
+                            if(lowPriority.isChecked()){
+                                priority = 0;
+                            }else if(mediumPriority.isChecked()){
+                                priority = 1;
+                            }else if(highPriority.isChecked()){
+                                priority = 2;
+                            }else{
+                                priority = 0;
+                            }
+                            ToDo addedToDo = mListData.getLists().get(mPositionNumber).getItems().get(
+                                    mListData.getLists().get(mPositionNumber).getItems().size()-1);
+                            switch (priority){
+                                case 0:
+                                    addedToDo.mPriority = 0;
+                                    mRecyclerView.getAdapter().notifyItemChanged(mPositionNumber);
+                                    break;
+                                case 1:
+                                    addedToDo.mPriority = 1;
+                                    mRecyclerView.getAdapter().notifyItemChanged(mPositionNumber);
+                                    break;
+                                case 2:
+                                    addedToDo.mPriority = 2;
+                                    mRecyclerView.getAdapter().notifyItemChanged(mPositionNumber);
+                                    break;
+                                default:
+                                    Log.d("tag", "onClick: SOMETHING WENT WRONG WITH THE PRIORITY SETTINGS");
+                            }
+                        }
+                    }
+                });
+                final AlertDialog dialog = dialogBuilder.create();
+                dialog.show();
+            }
+        });
+    }
+
+    public void setRadioButtonClickListeners(final RadioButton low, final RadioButton medium, final RadioButton high){
+        low.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                low.setChecked(true);
+                medium.setChecked(false);
+                high.setChecked(false);
+            }
+        });
+        medium.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                low.setChecked(false);
+                medium.setChecked(true);
+                high.setChecked(false);
+            }
+        });
+        high.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                low.setChecked(false);
+                medium.setChecked(false);
+                high.setChecked(true);
             }
         });
     }

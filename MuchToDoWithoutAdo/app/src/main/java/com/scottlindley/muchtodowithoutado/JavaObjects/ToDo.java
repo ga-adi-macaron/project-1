@@ -13,35 +13,12 @@ public class ToDo {
     public static final int MEDIUM_PRIORITY = 1;
     public static final int LOW_PRIORITY = 0;
 
-    public ToDo(String itemName, String itemDescription, int priority) {
+    public ToDo(String itemName, String itemDescription) {
         mItemName = itemName;
         mItemDescription = itemDescription;
-        mPriority = priority;
+        mPriority = LOW_PRIORITY;
         mIsChecked = false;}
 
-    public String getItemName() {
-        return mItemName;
-    }
-
-    public void setItemName(String itemName) {
-        mItemName = itemName;
-    }
-
-    public String getItemDescription() {
-        return mItemDescription;
-    }
-
-    public void setItemDescription(String itemDescription) {
-        mItemDescription = itemDescription;
-    }
-
-    public int getPriority() {
-        return mPriority;
-    }
-
-    public void setPriority(int priority) {
-        mPriority = priority;
-    }
 
 
 }
