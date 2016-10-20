@@ -3,9 +3,9 @@
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:id="@+id/home_list_layout"
-                android:layout_marginTop="2dp"
+                android:layout_marginBottom="4dp"
                 android:layout_height="80dp"
-                android:background="#e1fdf0">
+                android:background="#bff4dc">
 
 <TextView
         android:id="@+id/home_list_name"

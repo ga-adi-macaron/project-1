@@ -10,6 +10,7 @@
         android:text="New ToDo List"
         android:textSize="28dp"
         android:gravity="center"
+
         android:layout_marginTop="18dp"
         android:layout_marginBottom="24dp"
         android:textColor="@color/colorAccent"
@@ -19,6 +20,7 @@
         android:layout_width="260dp"
         android:layout_height="wrap_content"
         android:hint="New List Name"
+        android:inputType="textCapWords"
         android:layout_marginTop="8dp"
         android:layout_below="@id/home_dialog_title"
         android:layout_centerHorizontal="true"

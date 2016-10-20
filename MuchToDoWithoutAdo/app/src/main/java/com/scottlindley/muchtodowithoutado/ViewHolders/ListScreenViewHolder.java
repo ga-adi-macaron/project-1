@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import com.scottlindley.muchtodowithoutado.R;
 
+
 /**
  * Created by Scott Lindley on 10/19/2016.
  */
