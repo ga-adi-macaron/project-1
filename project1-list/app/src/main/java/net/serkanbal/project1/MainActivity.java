@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
             public View getView(int position, View convertView, ViewGroup parent) {
                 if (convertView == null) {
                     LayoutInflater inflater = LayoutInflater.from(MainActivity.this);
-                    convertView = inflater.inflate(android.R.layout.simple_list_item_1, null);
+                    convertView = inflater.inflate(R.layout.mainlistview_layout, null);
                 }
 
                 TextView textView = (TextView) convertView.findViewById(android.R.id.text1);
@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
                                             input.setError("Be logical!");
                                             Toast.makeText(MainActivity.this, "Can't be empty!", Toast.LENGTH_SHORT).show();
                                         } else {
-                                            mToDoList.add(new ToDoList(inputUser));
+                                            mToDoList.add(new ToDoList(inputUser.toUpperCase()));
                                             mToDoListAdapter.notifyDataSetChanged();
                                         }
                                     }
@@ -118,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
             public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-                builder.setTitle("Please Confirm:")
+                builder.setTitle("Please Confirm")
                         .setMessage("Do you really want to delete: " + mToDoList.get(position).getToDoListName()+"?")
                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             @Override
@@ -144,10 +144,10 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(MainActivity.this, TodoitemActivity.class);
                 intent.putExtra("POSITION", position);
+                intent.putExtra("LISTNAME",mToDoList.get(position).getToDoListName());
                 startActivity(intent);
             }
         });
 
     }
-
 }

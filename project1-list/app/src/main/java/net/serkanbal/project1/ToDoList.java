@@ -29,12 +29,13 @@ public class ToDoList {
         return mToDoItems;
     }
 
-    public void setToDoItems(List<ToDoItem> toDoItems) {
-        mToDoItems = toDoItems;
-    }
-
-    public void addToDoItem(ToDoItem toDoItem) {
-        mToDoItems.add(toDoItem);
-    }
+//    BELOW Methods are not used!
+//    public void setToDoItems(List<ToDoItem> toDoItems) {
+//        mToDoItems = toDoItems;
+//    }
+//
+//    public void addToDoItem(ToDoItem toDoItem) {
+//        mToDoItems.add(toDoItem);
+//    }
 
 }

@@ -32,6 +32,8 @@ public class TodoitemActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         int position = intent.getIntExtra("POSITION", 0);
+        String listName = intent.getStringExtra("LISTNAME");
+        setTitle("To-Do List: " + listName);
 
         mySingleton = Singleton.getInstance();
         mItemList = mySingleton.getListByIndex(position).getToDoItems();
@@ -56,7 +58,8 @@ public class TodoitemActivity extends AppCompatActivity {
             public View getView(int position, View convertView, ViewGroup parent) {
                 if (convertView == null) {
                     LayoutInflater inflater = LayoutInflater.from(TodoitemActivity.this);
-                    convertView = inflater.inflate(android.R.layout.simple_list_item_2, null);
+                    convertView = inflater.inflate(R.layout.secondaryviewlist_layout, null);
+//                    convertView = inflater.inflate(android.R.layout.simple_list_item_2, null);
                 }
 
                 TextView textView = (TextView) convertView.findViewById(android.R.id.text1);
@@ -96,7 +99,7 @@ public class TodoitemActivity extends AppCompatActivity {
                                         String inputDescUser = inputDesc.getText().toString();
 
                                         if (!inputTitleUser.isEmpty() && !inputDescUser.isEmpty()) {
-                                            mItemList.add(new ToDoItem(inputTitleUser, inputDescUser));
+                                            mItemList.add(new ToDoItem(inputTitleUser.toUpperCase(), inputDescUser));
 
                                             mItemAdapter.notifyDataSetChanged();
                                         } else {
@@ -127,7 +130,7 @@ public class TodoitemActivity extends AppCompatActivity {
             public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(TodoitemActivity.this);
-                builder.setTitle("Please Confirm:")
+                builder.setTitle("Please Confirm")
                         .setMessage("Do you really want to delete: " + mItemList.get(position).getItemTitle()+"?")
                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             @Override

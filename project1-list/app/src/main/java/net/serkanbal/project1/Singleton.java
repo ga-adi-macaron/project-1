@@ -31,5 +31,4 @@ public class Singleton{
     public ToDoList getListByIndex(int position) {
         return lists.get(position);
     }
-
 }

@@ -28,5 +28,4 @@ public class ToDoItem {
     public void setItemDesc(String itemDesc) {
         mItemDesc = itemDesc;
     }
-
 }
