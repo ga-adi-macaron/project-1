@@ -18,7 +18,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textStyle="bold"
-        android:text="SAMPLE"
         android:textSize="16dp"
         android:layout_toRightOf="@id/checkbox"
         android:layout_marginTop="18dp"
@@ -28,7 +27,6 @@
         android:id="@+id/list_item_description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="SAMPLE"
         android:layout_below="@id/list_item_name"
         android:layout_toRightOf="@id/checkbox"
         android:layout_marginLeft="18dp"/>

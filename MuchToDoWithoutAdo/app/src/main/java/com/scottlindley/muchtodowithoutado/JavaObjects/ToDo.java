@@ -5,9 +5,10 @@ package com.scottlindley.muchtodowithoutado.JavaObjects;
  */
 
 public class ToDo {
-    private String mItemName;
-    private String mItemDescription;
-    private int mPriority;
+    public String mItemName;
+    public String mItemDescription;
+    public int mPriority;
+    public boolean mIsChecked;
     public static final int HIGH_PRIORITY = 2;
     public static final int MEDIUM_PRIORITY = 1;
     public static final int LOW_PRIORITY = 0;
@@ -16,7 +17,7 @@ public class ToDo {
         mItemName = itemName;
         mItemDescription = itemDescription;
         mPriority = priority;
-    }
+        mIsChecked = false;}
 
     public String getItemName() {
         return mItemName;
@@ -41,4 +42,6 @@ public class ToDo {
     public void setPriority(int priority) {
         mPriority = priority;
     }
+
+
 }

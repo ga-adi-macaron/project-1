@@ -24,4 +24,17 @@ public class ListScreenViewHolder extends RecyclerView.ViewHolder{
         mItemDescription = (TextView)itemView.findViewById(R.id.list_item_description);
         mCheckBox = (CheckBox)itemView.findViewById(R.id.checkbox);
     }
+
+    public TextView getItemName() {
+        return mItemName;
+    }
+
+    public TextView getItemDescription() {
+        return mItemDescription;
+    }
+
+    public CheckBox getCheckBox() {
+        return mCheckBox;
+    }
+
 }

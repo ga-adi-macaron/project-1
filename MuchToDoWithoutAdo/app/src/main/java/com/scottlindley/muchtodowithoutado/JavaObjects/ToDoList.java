@@ -1,6 +1,6 @@
 package com.scottlindley.muchtodowithoutado.JavaObjects;
 
-import java.util.List;
+import java.util.ArrayList;
 
 /**
  * Created by Scott Lindley on 10/18/2016.
@@ -8,11 +8,13 @@ import java.util.List;
 
 public class ToDoList {
     private String mName;
-    private List<ToDo> items;
+    private ArrayList<ToDo> mItems;
 
-    public ToDoList(String name, List<ToDo> items) {
+    public ToDoList(String name) {
         mName = name;
-        this.items = items;
+        mItems = new ArrayList<>();
+
+
     }
 
     public String getName() {
@@ -23,11 +25,11 @@ public class ToDoList {
         mName = name;
     }
 
-    public List<ToDo> getItems() {
-        return items;
+    public ArrayList<ToDo> getItems() {
+        return mItems;
     }
 
-    public void setItems(List<ToDo> items) {
-        this.items = items;
+    public void setItems(ArrayList<ToDo> items) {
+        mItems = items;
     }
 }

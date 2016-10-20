@@ -1,32 +1,29 @@
 package com.scottlindley.muchtodowithoutado.ViewHolders;
 
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
 import com.scottlindley.muchtodowithoutado.R;
+
+import static android.content.ContentValues.TAG;
 
 /**
  * Created by Scott Lindley on 10/18/2016.
  */
 
 public class HomeScreenViewHolder extends RecyclerView.ViewHolder{
-    private TextView mTextView;
-    private FloatingActionButton mFloatingActionButton;
+    public TextView mHomeListName;
 
     public HomeScreenViewHolder(View itemView) {
         super(itemView);
 
-        mFloatingActionButton = (FloatingActionButton)itemView.findViewById(R.id.home_floating_action_button);
-        mTextView = (TextView)itemView.findViewById(R.id.home_list_name);
+        mHomeListName = (TextView)itemView.findViewById(R.id.home_list_name);
+        Log.d(TAG, "HomeScreenViewHolder: "+mHomeListName);
     }
 
     public TextView getTextView(){
-        return  mTextView;
-    }
-
-    public FloatingActionButton getFloatingActionButton(){
-        return mFloatingActionButton;
+        return  mHomeListName;
     }
 }

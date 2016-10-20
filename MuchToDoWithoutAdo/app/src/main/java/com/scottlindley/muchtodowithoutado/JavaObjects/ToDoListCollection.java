@@ -1,14 +1,13 @@
 package com.scottlindley.muchtodowithoutado.JavaObjects;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Scott Lindley on 10/18/2016.
  */
 public class ToDoListCollection {
     private static ToDoListCollection ourInstance;
-    private List<ToDoList> lists;
+    private ArrayList<ToDoList> lists;
 
     public static ToDoListCollection getInstance() {
         if(ourInstance==null){
@@ -21,7 +20,7 @@ public class ToDoListCollection {
         lists = new ArrayList<>();
     }
 
-    public List<ToDoList> getLists(){
+    public ArrayList<ToDoList> getLists(){
         return lists;
     }
 }

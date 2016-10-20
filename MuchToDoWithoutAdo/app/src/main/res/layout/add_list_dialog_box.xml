@@ -11,15 +11,17 @@
         android:textSize="28dp"
         android:gravity="center"
         android:layout_marginTop="18dp"
+        android:layout_marginBottom="8dp"
         android:textColor="@color/colorAccent"
         />
     <EditText
         android:id="@+id/new_list_name"
-        android:layout_width="match_parent"
+        android:layout_width="260dp"
         android:layout_height="wrap_content"
         android:hint="New List Name"
         android:layout_marginTop="8dp"
         android:layout_below="@id/home_dialog_title"
+        android:layout_centerHorizontal="true"
         android:gravity="center"/>
 
 </RelativeLayout>
