@@ -34,7 +34,7 @@ public class SubListRecyclerAdapter extends RecyclerView.Adapter<SubListHolder> 
     }
 
     @Override
-    public void onBindViewHolder(SubListHolder holder, final int position) { //
+    public void onBindViewHolder(final SubListHolder holder, final int position) { //
         noteView = (TextView)holder.itemView.findViewById(R.id.note);
         checkBox = (CheckBox)holder.itemView.findViewById(R.id.checkbox);
         relativeLayout = (RelativeLayout)holder.itemView.findViewById(R.id.sublistLayout);
@@ -45,8 +45,8 @@ public class SubListRecyclerAdapter extends RecyclerView.Adapter<SubListHolder> 
         View.OnClickListener toggleCheckbox = new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    MasterLister.getErrEncapInPosition(mPosInSuperList).getErrandsList().get(position).toggleChecked();
-                    notifyItemChanged(position);
+                    MasterLister.getErrEncapInPosition(mPosInSuperList).getErrandsList().get(holder.getAdapterPosition()).toggleChecked();
+                    notifyItemChanged(holder.getAdapterPosition());
                 }
         };
         relativeLayout.setOnClickListener(toggleCheckbox);
@@ -68,8 +68,8 @@ public class SubListRecyclerAdapter extends RecyclerView.Adapter<SubListHolder> 
                         .setPositiveButton("Delete", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                MasterLister.getErrEncapInPosition(mPosInSuperList).removeErrandByPosition(position);
-                                notifyItemRemoved(position);
+                                MasterLister.getErrEncapInPosition(mPosInSuperList).removeErrandByPosition(holder.getAdapterPosition());
+                                notifyItemRemoved(holder.getAdapterPosition());
                             }
                         }).setNegativeButton("Nevermind", new DialogInterface.OnClickListener() {
                     @Override
@@ -88,4 +88,5 @@ public class SubListRecyclerAdapter extends RecyclerView.Adapter<SubListHolder> 
     public int getItemCount() {
         return mErrandsList.size();
     }
+
 }

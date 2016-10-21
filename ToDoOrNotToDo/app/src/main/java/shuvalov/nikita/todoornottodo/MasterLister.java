@@ -33,4 +33,6 @@ public class MasterLister {
     public static int getPositionErrEncapInMasterList(ErrandsEncapsulator errandsEncapsulator){
         return mMasterList.indexOf(errandsEncapsulator);
     }
+    public static int debugSize(){return mMasterList.size();
+    }
 }

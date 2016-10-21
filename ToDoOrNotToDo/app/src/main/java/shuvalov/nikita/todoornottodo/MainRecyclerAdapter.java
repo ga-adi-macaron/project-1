@@ -32,7 +32,7 @@ public class MainRecyclerAdapter extends RecyclerView.Adapter<ListTitleHolder> {
     }
 
     @Override
-    public void onBindViewHolder(ListTitleHolder holder, final int position) {
+    public void onBindViewHolder(final ListTitleHolder holder, final int position) {
         TextView titleView = (TextView) holder.itemView.findViewById(R.id.listTitle);
         TextView descriptView = (TextView) holder.itemView.findViewById(R.id.descript);
 
@@ -64,7 +64,7 @@ public class MainRecyclerAdapter extends RecyclerView.Adapter<ListTitleHolder> {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 MasterLister.removeToDoList(position);
-                                notifyItemRemoved(position);
+                                notifyItemRemoved(holder.getAdapterPosition());
                                 dialog.cancel();
                             }
                         })
