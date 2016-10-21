@@ -67,8 +67,8 @@ public class TodoitemActivity extends AppCompatActivity {
                 textView.setText(mItemList.get(position).getItemTitle());
                 TextView textView1 = (TextView) convertView.findViewById(android.R.id.text2);
                 textView1.setText(mItemList.get(position).getItemDesc());
-
                 return convertView;
+
             }
         };
 
@@ -151,10 +151,10 @@ public class TodoitemActivity extends AppCompatActivity {
         mItemView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
-
                 AlertDialog.Builder builder = new AlertDialog.Builder(TodoitemActivity.this);
                 builder.setTitle("Please Select")
                         .setMessage("What do you want to do with the list item: " + mItemList.get(position).getItemTitle()+"?")
+
                         .setPositiveButton("Remove", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
