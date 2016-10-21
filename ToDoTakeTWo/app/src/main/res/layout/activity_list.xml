@@ -9,28 +9,40 @@
 
     <TextView
         android:id="@+id/InsideTextView"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="45sp"
         android:textStyle="bold"
         android:fontFamily="sans-serif-condensed"
-        android:gravity="center"
+        android:layout_centerHorizontal="true"
         android:text="Sweet"/>
+
+    <LinearLayout
+        android:id="@+id/LinearLayoutButtons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_below="@id/InsideTextView">
+    <Button
+        android:id="@+id/BackButton"
+        android:layout_width="60dp"
+        android:layout_height="45dp"
+        android:text="Back"
+        android:fontFamily="sans-serif-condensed" />
     <Button
         android:id="@+id/insideAddItemButton"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/InsideTextView"
-        android:text="Add item"
+        android:layout_width="280dp"
+        android:layout_height="45dp"
+        android:text="Add an item"
         android:textSize="20sp"
-        android:fontFamily="sans-serif-condensed"
-        android:layout_centerHorizontal="true"/>
-
+        android:fontFamily="sans-serif-condensed" />
+</LinearLayout>
     <ListView
+        android:layout_marginTop="10dp"
         android:id="@+id/InsideListView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/insideAddItemButton"></ListView>
+        android:layout_below="@id/LinearLayoutButtons"></ListView>
 
 
 </RelativeLayout>

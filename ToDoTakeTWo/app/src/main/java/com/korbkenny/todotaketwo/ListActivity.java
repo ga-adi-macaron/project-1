@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
@@ -36,6 +37,7 @@ public class ListActivity extends AppCompatActivity{
     private ArrayList<ToDoItem> mToDoItemLists;
     final Context context = this;
     private ToDoList current;
+    private Button mBackButton;
 
 
     @Override
@@ -54,6 +56,7 @@ public class ListActivity extends AppCompatActivity{
         mListOfItems = (ListView) findViewById(R.id.InsideListView);
         semiBigListofListsIguess = BigOldListOfLists.getInstance();
         mToDoItemLists = new ArrayList<ToDoItem>();
+        mBackButton = (Button) findViewById(R.id.BackButton);
 
         //mToDoItemLists = bigOldListOfLists.getListOfLists().get(index);
 
@@ -132,6 +135,20 @@ public class ListActivity extends AppCompatActivity{
 
         mListOfItems.setAdapter(mArrayAdapter2);
 
+        mBackButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ListActivity.this.finish();
+            }
+        });
+
+                  //  this.finish();
+
+            }
+        }
+
+
+
         //bigOldListOfLists.getListOfLists().get(index);
 
 
@@ -139,5 +156,5 @@ public class ListActivity extends AppCompatActivity{
 
        // Intent receivedIntent = getIntent();
 
-    }
-}
+    //}
+//}
