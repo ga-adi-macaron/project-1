@@ -12,6 +12,8 @@
         android:text="Enter To-Do List's Name"/>
 
     <EditText
+        android:maxLines="1"
+        android:inputType="text"
         android:hint="NAME"
         android:id="@+id/editTextDialogUserInput"
         android:layout_width="match_parent"
