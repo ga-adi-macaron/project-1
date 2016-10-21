@@ -19,7 +19,7 @@ public class ErrandsEncapsulator {
             mTitle=title;
         }
         if(description.equals("")){
-            mDescription=title;
+            mDescription=mTitle;
         }else{
             mDescription=description;
 
