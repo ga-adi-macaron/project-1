@@ -18,7 +18,7 @@ public class CustomList {
         this.listName = a;
         this.description = b;
         this.check = checked;
-        this.entry = d;
+        this.entry = getEntry();
     }
 
     public String getListName() {
@@ -39,6 +39,7 @@ public class CustomList {
 
     public String getEntry() {
         return entry;
-
     }
+
+
 }

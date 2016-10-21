@@ -31,7 +31,7 @@ public class CustomViewholder extends RecyclerView.ViewHolder {
         mCheckbox = (CheckBox) itemView.findViewById(R.id.Checkbox);
         mCheckbox2 = (CheckBox) itemView.findViewById(R.id.Checkbox1);
 
-        mentry = (EditText) itemView.findViewById(R.id.entry);
+        //mentry = (EditText) itemView.findViewById(R.id.entry);
 
     }
 }

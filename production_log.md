@@ -23,3 +23,5 @@ Item Features (by section):
                     Sub section for notes that are due to be deleted.
         
         Sidebar Menu - Settings for push notification reminders, access to 'My Lists'(?), (NOT DOING THIS MOST LIKELY)
+        
+The app builds in a very basic way, but I can't figure out how to get my second activity to render on the screen....

@@ -33,9 +33,10 @@ public class CustomRecyclerView extends RecyclerView.Adapter<CustomViewholder> {
         holder.mMy_Lists.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent movePage = new Intent(v.getContext(), SecondActivity.class); //need new activity to move into
+                Intent movePage = new Intent(v.getContext(), SecondActivity.class);
                 movePage.putExtra("List Name", position);
                 v.getContext().startActivity(movePage);
+                notifyDataSetChanged();
 
                 // create intent to send to next activity
                 // pass along position (int)

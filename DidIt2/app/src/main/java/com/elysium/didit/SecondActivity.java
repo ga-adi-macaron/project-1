@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class SecondActivity extends AppCompatActivity {
 
-    @Override
+    /**@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
@@ -25,6 +25,6 @@ public class SecondActivity extends AppCompatActivity {
 
         CustomRecyclerView CustomViewholder = new CustomRecyclerView(customList);
 
-        mRecyclerView.setAdapter(CustomViewholder);
+        mRecyclerView.setAdapter(CustomViewholder);*/
     }
-}
+
