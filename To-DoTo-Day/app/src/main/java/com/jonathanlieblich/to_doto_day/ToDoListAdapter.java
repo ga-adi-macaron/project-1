@@ -52,8 +52,8 @@ public class ToDoListAdapter extends RecyclerView.Adapter<ToDoListViewHolder> {
                         holder.mEditButton.getContext().startActivity(intent);
                         break;
                     case(R.id.delete_button):
-                        mToDoLister.remove(position);
-                        notifyItemChanged(position);
+                        mToDoLister.remove(holder.getAdapterPosition());
+                        notifyItemRemoved(holder.getAdapterPosition());
                         break;
                     default:
                         Toast.makeText(v.getContext(), "You missed the button...", Toast.LENGTH_SHORT).show();
