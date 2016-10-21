@@ -124,13 +124,58 @@ public class MainActivity extends AppCompatActivity {
             public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-                builder.setTitle("Please Confirm")
-                        .setMessage("Do you really want to delete: " + mToDoList.get(position).getToDoListName()+"?")
-                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                builder.setTitle("Please Select")
+                        .setMessage("What do you want to do with the list: " + mToDoList.get(position).getToDoListName()+"?")
+                        .setPositiveButton("Remove", new DialogInterface.OnClickListener() {
                             @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
+                            public void onClick(DialogInterface dialog, int which) {
                                 mToDoList.remove(position);
                                 mToDoListAdapter.notifyDataSetChanged();
+                            }
+                        })
+                        .setNeutralButton("Rename", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                LayoutInflater layoutInflater = LayoutInflater.from(MainActivity.this);
+                                final View promptsView = layoutInflater.inflate(R.layout.dialoglist_layout, null);
+                                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                                        MainActivity.this);
+
+                                // set prompts.xml to alertdialog builder
+                                alertDialogBuilder.setView(promptsView);
+
+                                // set dialog message
+                                alertDialogBuilder
+                                        .setCancelable(false)
+                                        .setPositiveButton("OK",
+                                                new DialogInterface.OnClickListener() {
+                                                    public void onClick(DialogInterface dialog,int id) {
+                                                        EditText input = (EditText) promptsView.findViewById(R.id.editTextDialogUserInput);
+                                                        String inputUser = input.getText().toString();
+                                                        if (inputUser.isEmpty()) {
+                                                            Toast.makeText(MainActivity.this,
+                                                                    "List Name can't be empty!",
+                                                                    Toast.LENGTH_SHORT).show();
+                                                        } else {
+                                                            mToDoList.set(position,new ToDoList(inputUser));
+                                                            mTextView.setBackgroundColor(Color.parseColor("#fffafafa"));
+                                                            mTextView.setText("");
+                                                            mToDoListAdapter.notifyDataSetChanged();
+                                                        }
+                                                    }
+                                                })
+                                        .setNegativeButton("Cancel",
+                                                new DialogInterface.OnClickListener() {
+                                                    public void onClick(DialogInterface dialog,int id) {
+                                                        dialog.cancel();
+                                                    }
+                                                });
+
+                                // create alert dialog
+                                AlertDialog alertDialog = alertDialogBuilder.create();
+
+                                // show it
+                                alertDialog.show();
                             }
                         })
                         .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
