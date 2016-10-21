@@ -24,18 +24,26 @@ public class CreateToDoListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_to_do_list);
 
+        //view of to-do items
         mListedLists = (RecyclerView)findViewById(R.id.item_list);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(mListedLists.getContext());
         mListedLists.setLayoutManager(layoutManager);
 
+        //edit text for title and description
         mEditTitle = (EditText)findViewById(R.id.list_name);
-        mEditDescription = (EditText)findViewById(R.id.priority);
+        mEditDescription = (EditText)findViewById(R.id.description);
 
+        //save - add new to-do item, clear - clear current edit text entries
         mSave = (Button)findViewById(R.id.save_button);
         mClear = (Button)findViewById(R.id.clear_button);
 
         Intent intent = getIntent();
+
+        int listPosition = intent.getIntExtra("ListPosition", -1);
+        mToDoList = ListOfLists.getInstance().getToDoLists().get(listPosition).getToDoItems();
+
+
 
         mEditTitle.setHint("Item Title");
         mEditTitle.setText(intent.getStringExtra("Item Title"));
@@ -50,7 +58,9 @@ public class CreateToDoListActivity extends AppCompatActivity {
                 if(mEditTitle.getText().length() < 1) {
                     mEditTitle.setError("Title Cannot Be Empty");
                 } else {
-                    mToDoList.get(new ToDoListAdapter(mToDoList));
+                    mToDoList.add(new ToDoItem(mEditTitle.getText().toString(),
+                            mEditDescription.getText().toString()));
+                    mListedLists.getAdapter().notifyItemInserted(mToDoList.size()-1);
                 }
                 mEditTitle.setText("");
                 mEditDescription.setText("");

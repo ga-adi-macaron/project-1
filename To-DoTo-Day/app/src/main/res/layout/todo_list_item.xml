@@ -19,14 +19,6 @@
         android:textStyle="bold"
         android:textColor="#000000"/>
 
-    <TextView
-        android:id="@+id/list_item_preview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Sample List Item\nSample List Item\nSample List Item"
-        android:layout_below="@id/list_title"
-        android:layout_alignRight="@id/list_title" />
-
     <android.support.v7.widget.AppCompatButton
         android:id="@+id/edit_button"
         android:layout_width="40dp"

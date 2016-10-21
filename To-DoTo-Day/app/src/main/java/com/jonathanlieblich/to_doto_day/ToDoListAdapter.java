@@ -40,7 +40,7 @@ public class ToDoListAdapter extends RecyclerView.Adapter<ToDoListViewHolder> {
     public void onBindViewHolder(final ToDoListViewHolder holder, final int position) {
         final ToDoList newList = mToDoLister.get(position);
 
-        final List<ToDoItem> listItems;
+        holder.mListTitle.setText(mToDoLister.get(position).getListTitle());
 
         View.OnClickListener onClickListener = new View.OnClickListener() {
             @Override
@@ -48,7 +48,7 @@ public class ToDoListAdapter extends RecyclerView.Adapter<ToDoListViewHolder> {
                 switch(v.getId()) {
                     case(R.id.edit_button):
                         Intent intent = new Intent(holder.mEditButton.getContext(), CreateToDoListActivity.class);
-                        intent.putExtra("List Title", newList.getListTitle());
+                        intent.putExtra("ListPosition", holder.getAdapterPosition());
                         holder.mEditButton.getContext().startActivity(intent);
                         break;
                     case(R.id.delete_button):

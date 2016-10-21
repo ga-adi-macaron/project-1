@@ -1,5 +1,6 @@
 package com.jonathanlieblich.to_doto_day;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -10,27 +11,33 @@ public class ListOfLists {
     private static List<ToDoList> toDoLists;
     private static String listOfItemsTitle;
 
-    private static ListOfLists ourInstance = new ListOfLists();
+    private ListOfLists() {
+        toDoLists = new ArrayList<>();
+    }
 
     public static ListOfLists getInstance() {
         if(listOfLists == null)
             listOfLists = new ListOfLists();
-        return ourInstance;
+        return listOfLists;
     }
 
-    public static List<ToDoList> getToDoLists() {
+    public List<ToDoList> getToDoLists() {
         return toDoLists;
     }
 
-    public static void setToDoList(List<ToDoList> toDoLister) {
+    public void addToDoList(String title) {
+        toDoLists.add(new ToDoList(title));
+    }
+
+    public void setToDoList(List<ToDoList> toDoLister) {
         toDoLists = toDoLister;
     }
 
-    public static void setListTtitle(String title) {
+    public void setListTtitle(String title) {
         listOfItemsTitle = title;
     }
 
-    public static String getListTitle() {
+    public String getListTitle() {
         return listOfItemsTitle;
     }
 }

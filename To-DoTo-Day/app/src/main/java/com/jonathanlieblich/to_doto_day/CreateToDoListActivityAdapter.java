@@ -4,7 +4,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -15,13 +17,13 @@ public class CreateToDoListActivityAdapter extends RecyclerView.Adapter<ToDoItem
     List<ToDoItem> mToDoItems;
 
     public CreateToDoListActivityAdapter(List<ToDoItem> toDoList) {
-        mToDoItems = ListOfLists.getInstance().getToDoLists();
+        mToDoItems = toDoList;
     }
 
     @Override
     public ToDoItemViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View newView = inflater.inflate(R.layout.todo_list_item, parent, false);
+        View newView = inflater.inflate(R.layout.todo_item, parent, false);
 
         ToDoItemViewHolder viewHolder = new ToDoItemViewHolder(newView);
         return viewHolder;
@@ -29,14 +31,14 @@ public class CreateToDoListActivityAdapter extends RecyclerView.Adapter<ToDoItem
 
     @Override
     public void onBindViewHolder(ToDoItemViewHolder holder, int position) {
-        ToDoItem toDoItem = ListOfLists.getInstance().getToDoLists().get(position).getToDoItems().get(position);
+        final ToDoItem toDoItem = mToDoItems.get(position);
 
         holder.mItemName.setText(toDoItem.getTitle());
-//        holder.mItemDescription.setText(toDoItem.getDescription());
+        holder.mItemDescription.setText(toDoItem.getDescription());
     }
 
     @Override
     public int getItemCount() {
-        return ListOfLists.getInstance().getToDoLists().size();
+        return mToDoItems.size();
     }
 }

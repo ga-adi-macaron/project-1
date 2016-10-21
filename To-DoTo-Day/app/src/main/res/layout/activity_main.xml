@@ -1,8 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/list-of-lists"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#e0e0e0"
-    tools:context="com.jonathanlieblich.to_doto_day.MainActivity"/>
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.jonathanlieblich.to_doto_day.MainActivity">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/list_of_lists"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/floating_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:layout_margin="32dp"
+        app:backgroundTint="@color/colorPrimary"
+        app:srcCompat="@android:drawable/ic_menu_add"
+        app:elevation="21dp" />
+
+</android.support.design.widget.CoordinatorLayout>

@@ -1,5 +1,6 @@
 package com.jonathanlieblich.to_doto_day;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -10,24 +11,18 @@ public class ToDoList {
     private List<ToDoItem> mToDoItems;
     private String mListTitle;
     private boolean mListComplete;
-    private int mListPriority;
 
-    public ToDoList(String title, List<ToDoItem> toDoItems, int listPriority) {
-        mListPriority = listPriority;
+    public ToDoList(String title) {
         mListComplete = false;
         mListTitle = title;
-        mToDoItems = toDoItems;
-    }
-
-    public void addNewItem(String title, String description) {
-        mToDoItems.add(new ToDoItem(title, description));
+        mToDoItems = new ArrayList<>();
     }
 
     public void addItem(ToDoItem item) {
         mToDoItems.add(item);
     }
 
-    public List getToDoItems() {
+    public List<ToDoItem> getToDoItems() {
         return mToDoItems;
     }
 
@@ -45,13 +40,5 @@ public class ToDoList {
 
     public void listComplete() {
         mListComplete = !isListComplete();
-    }
-
-    public int getListPriority() {
-        return mListPriority;
-    }
-
-    public void setListPriority(int priority) {
-        mListPriority = priority;
     }
 }

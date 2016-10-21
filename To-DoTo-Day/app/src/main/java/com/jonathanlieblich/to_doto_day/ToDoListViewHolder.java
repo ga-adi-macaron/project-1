@@ -17,7 +17,7 @@ import java.util.List;
 public class ToDoListViewHolder extends RecyclerView.ViewHolder {
     public Button mEditButton, mDeleteButton;
     public ImageView mListInfo;
-    public TextView mListTitle, mToDoItemsPreview;
+    public TextView mListTitle;
     public RelativeLayout mToDoListLayout;
 
     public ToDoListViewHolder(View itemView) {
@@ -29,7 +29,6 @@ public class ToDoListViewHolder extends RecyclerView.ViewHolder {
         mListInfo = (ImageView)itemView.findViewById(R.id.list_info);
 
         mListTitle = (TextView)itemView.findViewById(R.id.list_title);
-        mToDoItemsPreview = (TextView)itemView.findViewById(R.id.list_item_preview);
 
         mToDoListLayout = (RelativeLayout)itemView.findViewById(R.id.recycler_list);
     }
