@@ -12,21 +12,32 @@ import android.widget.Toast;
 public class SubListActivity extends AppCompatActivity {
     private RecyclerView subListRecyView;
     private LinearLayoutManager linearLayoutManager;
-    private Button addItemButt;
+    private Button addItemButt, backButt;
     private int mPosition;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sub_list);
 
-
         subListRecyView = (RecyclerView) findViewById(R.id.errandRecycler);
         linearLayoutManager = new LinearLayoutManager(SubListActivity.this, LinearLayoutManager.VERTICAL, false);
         subListRecyView.setLayoutManager(linearLayoutManager);
+
         addItemButt = (Button)findViewById(R.id.additem);
+        backButt = (Button)findViewById(R.id.backButt);
+
+        backButt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
         Intent superListIntent = getIntent();
         mPosition=superListIntent.getIntExtra("Position",-1);
+
         addItemButt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -34,6 +45,7 @@ public class SubListActivity extends AppCompatActivity {
                 startActivityForResult(intent, MainActivity.RETRIEVE_CONTENT);
             }
         });
+
         SubListRecyclerAdapter subListRecAdp = new SubListRecyclerAdapter(MasterLister.retriveToDoLists().get(mPosition).getErrandsList());
         subListRecyView.setAdapter(subListRecAdp);
     }

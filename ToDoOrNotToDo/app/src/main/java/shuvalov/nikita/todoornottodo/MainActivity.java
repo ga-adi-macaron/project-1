@@ -17,6 +17,13 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+
+//ToDo:Add imageView to title_form with the data being held in ErrandsEncapsulator for the icons.
+//ToDo:Add a longclickListener in SubListRecyclerAdapter to allow user to remove listItems. ToDo:Add warning dialog to this as well. Can probably use previous warning alert dialog.
+//ToDo:Persist Data with either SharedPreferences or OutputFile.
+//ToDo:Give user option to edit SuperList info such as Title or description in warning alert Dialog.
+
+
 public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private Button addListButt;

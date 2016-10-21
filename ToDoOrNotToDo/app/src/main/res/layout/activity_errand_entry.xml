@@ -14,13 +14,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="RETURN Errand"
-        android:layout_alignParentBottom="true"/>
+        android:layout_alignParentTop="true"/>
 
     <EditText
         android:id="@+id/uiText"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:hint="Enter note"
-        android:layout_above="@id/submitErrandButton"/>
+        android:layout_below="@id/submitErrandButton"
+        android:gravity="start"/>
 
 </RelativeLayout>
