@@ -8,9 +8,14 @@ import static android.R.id.text1;
 
 public class CustomList {
 
-    public int MyLists(int lists) {
+    private String mText, mText2, mtext3, mText4;
+    
 
-        public CustomList( text1)
+    public CustomList (String text, text2, text3, text4) {
+
+        mText = text;
+        mText2
+
 
 
     }

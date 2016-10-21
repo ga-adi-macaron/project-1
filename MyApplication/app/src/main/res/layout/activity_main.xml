@@ -8,30 +8,19 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.elysium.didit.MainActivity">
+    tools:context="com.elysium.did_it.MainActivity">
 
-
-<android.support.v7.widget.RecyclerView
-    android:id="@+id/recyclerview"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-</android.support.v7.widget.RecyclerView>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </android.support.v7.widget.RecyclerView>
 
     <Button
-        android:id="@+id/Add_button"
+        android:id="@+id/add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Add"
         android:layout_margin="12dp"
-        android:layout_alignParentBottom="true" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Delete"
-        android:layout_margin="12dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true" />
-
-
+        android:layout_alignParentBottom="true"/>
 </RelativeLayout>

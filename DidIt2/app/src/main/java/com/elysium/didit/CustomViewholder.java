@@ -5,22 +5,23 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 
 /**
  * Created by jay on 10/20/16.
  */
 // CustomViewHolder
-public class CustomRecyclerViewholder extends RecyclerView.ViewHolder {
+public class CustomViewholder extends RecyclerView.ViewHolder {
 
-    public EditText mList, mTo_do;
+    public TextView mList, mTo_do;
     public Button mAdd_button;
     public CheckBox mCheckbox;
 
-    public CustomRecyclerViewholder (View itemView) {
+    public CustomViewholder(View itemView) {
         super(itemView);
 
-        mList = (EditText) itemView.findViewById(R.id.Lists);
-        mTo_do = (EditText) itemView.findViewById(R.id.To_do);
+        mList = (TextView) itemView.findViewById(R.id.Lists);
+        mTo_do = (TextView) itemView.findViewById(R.id.To_do);
 
         mAdd_button = (Button) itemView.findViewById(R.id.Add_button);
 
