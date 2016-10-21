@@ -10,13 +10,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.elysium.didit.MainActivity">
 
-
-<android.support.v7.widget.RecyclerView
-    android:id="@+id/recyclerview"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-</android.support.v7.widget.RecyclerView>
-
     <Button
         android:id="@+id/Add_button"
         android:layout_width="wrap_content"
@@ -33,6 +26,23 @@
         android:layout_margin="12dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true" />
+
+    <EditText
+        android:id="@+id/list_naming"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="name your list" />
+
+
+<android.support.v7.widget.RecyclerView
+    android:id="@+id/recyclerview"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_above="@id/Add_button"
+    android:layout_below="@id/list_naming">
+</android.support.v7.widget.RecyclerView>
+
+
 
 
 </RelativeLayout>
