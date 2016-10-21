@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(MainActivity.this, LinearLayoutManager.VERTICAL, false);
         mRecyclerView.setLayoutManager(linearLayoutManager);
 
-        ArrayList<CustomList> customList = new ArrayList<>();
+        ArrayList<CustomList> CustomList = new ArrayList<>();
 
         customList.add(new CustomList("1"));
         customList.add(new CustomList("2"));
@@ -33,7 +33,6 @@ public class MainActivity extends AppCompatActivity {
 
         CustomRecyclerView CustomRecyclerViewholder = new CustomRecyclerView(CustomList);
 
-        mRecyclerView.setAdapter(CustomViewholder);
+        mRecyclerView.setAdapter(CustomViewholder)
 
-        }
     }

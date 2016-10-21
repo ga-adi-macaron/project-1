@@ -12,7 +12,7 @@ public class CustomList {
     private String mText, mText2, mtext3, mText4;
 
 
-    public CustomList (String text, text2, text3, text4) {
+    public CustomList (String text, String text2, String text3, String text4) {
 
         mText = text;
         mText2 = text2;

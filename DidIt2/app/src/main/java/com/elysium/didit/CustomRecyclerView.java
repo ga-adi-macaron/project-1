@@ -27,7 +27,7 @@ public class CustomRecyclerView extends RecyclerView.Adapter<CustomViewholder> {
 
     @Override
     public void onBindViewHolder(CustomViewholder holder, int position) {
-        holder.mList.setText(mCustomList.get(position).getText1);
+        holder.mList.setText(mCustomList.get(position).customList);
 
     } //create clickListener below
 
