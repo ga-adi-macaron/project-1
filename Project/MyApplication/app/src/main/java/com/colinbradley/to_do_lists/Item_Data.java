@@ -5,8 +5,8 @@ package com.colinbradley.to_do_lists;
  */
 
 public class Item_Data {
+
     private String mItemTitle, mDescription;
-    private int mColor;
 
     public Item_Data(String itemTitle, String description){
         mDescription = description;

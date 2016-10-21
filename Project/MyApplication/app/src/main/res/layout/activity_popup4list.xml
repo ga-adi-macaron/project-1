@@ -12,7 +12,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint=" New List Name "
-        android:textColorHint="#ffffff"
+        android:textColorHint="#bbbbbb"
+        android:textColor="#ffffff"
         android:textSize="30sp"
         android:layout_gravity="center"
         android:gravity="center"/>

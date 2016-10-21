@@ -7,8 +7,11 @@ import java.util.LinkedList;
  * Created by colinbradley on 10/19/16.
  */
 public class ToDoLists_Data {
+
     private static ToDoLists_Data toDoListsData = new ToDoLists_Data();
+
     private static LinkedList<String> mLists;
+
     private static HashMap<String, LinkedList<Item_Data>> mItem;
 
 

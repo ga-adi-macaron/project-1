@@ -26,15 +26,13 @@ public class ToDoLists_Adapter extends RecyclerView.Adapter<ToDoLists_Holder> {
 
     public ToDoLists_Adapter(HashMap<String, LinkedList<Item_Data>> todoLists, Context context, RelativeLayout layout){
         mContext = context;
+
         mToDoLists = todoLists;
+
         mLayout = layout;
 
         intent.setClass(context, Item_Activity.class);
-
-
     }
-
-
 
     @Override
     public ToDoLists_Holder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -43,8 +41,6 @@ public class ToDoLists_Adapter extends RecyclerView.Adapter<ToDoLists_Holder> {
         View itemView = inflater.inflate(R.layout.list_layout, parent, false);
 
         return new ToDoLists_Holder(itemView);
-
-
     }
 
     @Override
@@ -71,11 +67,9 @@ public class ToDoLists_Adapter extends RecyclerView.Adapter<ToDoLists_Holder> {
             }
         };
         holder.mRelativeLayout.setOnClickListener(onClickListener);
+
         holder.mRemoveListButton.setOnClickListener(onClickListener);
-
     }
-
-
 
     @Override
     public int getItemCount() {

@@ -23,7 +23,9 @@ import java.util.LinkedList;
 public class Item_Activity extends AppCompatActivity {
 
     public static final String INTENT = "listname";
+
     RecyclerView mRV;
+
     Button mAddItemButton, mBackButton;
 
 
@@ -38,6 +40,7 @@ public class Item_Activity extends AppCompatActivity {
         final LinkedList<Item_Data> itemlist = ToDoLists_Data.getInstance().getItemName(name);
 
         mRV = (RecyclerView)findViewById(R.id.itemRV);
+
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         mRV.setLayoutManager(linearLayoutManager);
 
@@ -55,6 +58,7 @@ public class Item_Activity extends AppCompatActivity {
                         View view = getLayoutInflater().inflate(R.layout.activity_popup4item, null);
 
                         final EditText mInputItemName = (EditText)view.findViewById(R.id.inputItemName);
+
                         final EditText mInputItemDescription = (EditText)view.findViewById(R.id.inputItemDescription);
 
                         itemInput.setView(view).setPositiveButton("Add", new DialogInterface.OnClickListener() {
@@ -84,16 +88,11 @@ public class Item_Activity extends AppCompatActivity {
             }
         };
         mAddItemButton = (Button)findViewById(R.id.addITEMbutton);
+
         mAddItemButton.setOnClickListener(onClickListener);
+
         mBackButton = (Button)findViewById(R.id.backButton);
+
         mBackButton.setOnClickListener(onClickListener);
-
-
-
     }
-
-
-
-
-
 }

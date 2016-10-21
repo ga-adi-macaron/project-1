@@ -26,7 +26,7 @@ public class Item_Adapter extends RecyclerView.Adapter<Item_Holder> {
 
     EditText mItemTitle;
 
-    EditText mItemDescription;
+    EditText mDescription;
 
 
     public Item_Adapter(LinkedList<Item_Data> items, Activity context){

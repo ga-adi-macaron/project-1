@@ -20,8 +20,6 @@ public class ToDoLists_Holder extends RecyclerView.ViewHolder {
     public Button mRemoveListButton;
 
 
-
-
     public ToDoLists_Holder(View itemView) {
         super(itemView);
 

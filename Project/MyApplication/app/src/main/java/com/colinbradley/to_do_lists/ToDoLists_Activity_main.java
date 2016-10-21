@@ -61,9 +61,7 @@ public class ToDoLists_Activity_main extends AppCompatActivity {
 
         mRelativeLayout = (RelativeLayout) findViewById(R.id.activity_to_do_lists);
 
-
         mRV.setAdapter(toDoLists_adapter);
-
 
         mToDoLists_Data = ToDoLists_Data.getInstance();
 
@@ -99,43 +97,6 @@ public class ToDoLists_Activity_main extends AppCompatActivity {
                         dialog.cancel();
                     }
                 }).create().show();
-
-            }
-        });
-
-
-
-
-
-
-
-
-
-
-    }
-
-    public void onClickListener(ToDoLists_Holder holder, final int position){
-
-        final String listName = ToDoLists_Data.getInstance().getmLists().get(position);
-
-        holder.mTextView.setText(listName);
-
-        mRV.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ToDoLists_Activity_main.this, Item_Activity.class);
-                intent.putExtra(INTENT, listName);
-                startActivity(intent);
-            }
-        });
-
-        mRemoveListButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ToDoLists_Data.getInstance().removeItemPosition(position);
-                toDoLists_adapter.notifyDataSetChanged();
-                Toast.makeText(mContext, listName + " has beed DELETED", Toast.LENGTH_SHORT).show();
-
             }
         });
     }

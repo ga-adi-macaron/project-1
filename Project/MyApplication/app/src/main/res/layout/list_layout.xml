@@ -3,19 +3,22 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/layoutForListView">
+    android:id="@+id/layoutForListView"
+    >
 
     <TextView
         android:id="@+id/list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:textSize="30sp"/>
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:textColor="#000000"
+        />
 
     <Button
         android:id="@+id/removeLISTbutton"
-        android:layout_alignRight="@id/list"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="REMOVE LIST"/>
+        android:layout_alignParentRight="true"
+        android:layout_width="35sp"
+        android:layout_height="35sp"
+        android:text="X"/>
 
 </RelativeLayout>
