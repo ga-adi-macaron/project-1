@@ -6,9 +6,20 @@
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
     android:paddingTop="16dp"
+    android:background="@drawable/paperbackground"
     android:id="@+id/itemview">
 
+    <TextView
+        android:id="@+id/thislist"
+        android:textSize="30sp"
+        android:gravity="center"
+        android:fontFamily="casual"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Your Lists"/>
+
     <android.support.v7.widget.RecyclerView
+        android:layout_below="@+id/thislist"
         android:id="@+id/itemRV"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

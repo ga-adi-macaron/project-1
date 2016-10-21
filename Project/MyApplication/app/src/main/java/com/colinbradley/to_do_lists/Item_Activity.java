@@ -26,6 +26,8 @@ public class Item_Activity extends AppCompatActivity {
 
     RecyclerView mRV;
 
+    TextView mTitle;
+
     Button mAddItemButton, mBackButton;
 
 
@@ -41,13 +43,15 @@ public class Item_Activity extends AppCompatActivity {
 
         mRV = (RecyclerView)findViewById(R.id.itemRV);
 
+        mTitle = (TextView)findViewById(R.id.thislist);
+
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         mRV.setLayoutManager(linearLayoutManager);
 
         final Item_Adapter itemAdapter = new Item_Adapter(itemlist, Item_Activity.this);
         mRV.setAdapter(itemAdapter);
 
-
+        mTitle.setText(name);
 
         View.OnClickListener onClickListener = new View.OnClickListener() {
             @Override

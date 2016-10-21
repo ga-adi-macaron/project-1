@@ -8,9 +8,21 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@drawable/paperbackground"
     tools:context="com.colinbradley.to_do_lists.ToDoLists_Activity_main">
 
+    <TextView
+        android:id="@+id/yourlists"
+        android:textSize="30sp"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:fontFamily="casual"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Your Lists"/>
+
     <android.support.v7.widget.RecyclerView
+        android:layout_below="@+id/yourlists"
         android:id="@+id/listview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

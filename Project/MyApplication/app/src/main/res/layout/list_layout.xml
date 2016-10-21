@@ -11,6 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="30sp"
+        android:textStyle="bold"
+        android:fontFamily="casual"
         android:textColor="#000000"
         />
 
@@ -18,7 +20,7 @@
         android:id="@+id/removeLISTbutton"
         android:layout_alignParentRight="true"
         android:layout_width="35sp"
-        android:layout_height="35sp"
+        android:layout_height="wrap_content"
         android:text="X"/>
 
 </RelativeLayout>
