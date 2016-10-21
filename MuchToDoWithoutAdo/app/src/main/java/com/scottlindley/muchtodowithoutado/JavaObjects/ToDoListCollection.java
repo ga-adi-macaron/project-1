@@ -1,11 +1,12 @@
 package com.scottlindley.muchtodowithoutado.JavaObjects;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Created by Scott Lindley on 10/18/2016.
  */
-public class ToDoListCollection {
+public class ToDoListCollection implements Serializable{
     private static ToDoListCollection ourInstance;
     private ArrayList<ToDoList> lists;
 

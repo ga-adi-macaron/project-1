@@ -1,10 +1,15 @@
 package com.scottlindley.muchtodowithoutado.RecyclerViewAdapters;
 
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.graphics.Color;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.widget.EditText;
 
 import com.scottlindley.muchtodowithoutado.JavaObjects.ToDo;
 import com.scottlindley.muchtodowithoutado.JavaObjects.ToDoListCollection;
@@ -49,6 +54,21 @@ public class ListScreenRecyclerViewAdapter extends RecyclerView.Adapter<ListScre
             }
         });
 
+        holder.mRelativeLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                holder.mInfoButton.setVisibility(View.VISIBLE);
+                holder.mInfoButton.setClickable(true);
+                holder.mInfoButton.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        holder.mInfoButton.setVisibility(View.INVISIBLE);
+                        holder.mInfoButton.setClickable(false);
+                    }
+                }, 2000);
+            }
+        });
+
         holder.mRelativeLayout.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
@@ -58,6 +78,42 @@ public class ListScreenRecyclerViewAdapter extends RecyclerView.Adapter<ListScre
             }
         });
 
+        holder.mInfoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(view.getContext());
+
+                LayoutInflater inflater = LayoutInflater.from(view.getContext());
+                View dialogView = (inflater.inflate(R.layout.edit_list_item_dialog, null));
+                dialogBuilder.setView(dialogView);
+                final EditText itemName = (EditText) dialogView.findViewById(R.id.new_todo);
+
+                dialogBuilder.setNegativeButton("cancel", null);
+                dialogBuilder.setPositiveButton("okay", null);
+                final AlertDialog dialog = dialogBuilder.create();
+                dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
+
+                dialog.setOnShowListener(new DialogInterface.OnShowListener() {
+                    @Override
+                    public void onShow(DialogInterface dialogInterface) {
+                        dialog.getButton(Dialog.BUTTON_NEGATIVE).setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                dialog.dismiss();
+                            }
+                        });
+                        dialog.getButton(Dialog.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+
+                                // need to make edit functionality
+                            }
+                        });
+                    }
+                });
+                dialog.show();
+            }
+        });
 
         if(!holder.mCheckBox.isChecked()){
             holder.mCheckBox.setChecked(false);

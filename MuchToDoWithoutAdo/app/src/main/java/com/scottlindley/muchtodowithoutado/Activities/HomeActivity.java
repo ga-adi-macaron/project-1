@@ -31,7 +31,7 @@ public class HomeActivity extends AppCompatActivity {
     private FloatingActionButton mFloatingActionButton;
     private RecyclerView mRecyclerView;
     public ToDoListCollection mHomeLists;
-    public static final String FILE_NAME = "FILENAME";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

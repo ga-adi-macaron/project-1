@@ -3,6 +3,7 @@ package com.scottlindley.muchtodowithoutado.ViewHolders;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -18,6 +19,7 @@ public class ListScreenViewHolder extends RecyclerView.ViewHolder{
     public TextView mItemDescription;
     public CheckBox mCheckBox;
     public RelativeLayout mRelativeLayout;
+    public ImageView mInfoButton;
 
 
     public ListScreenViewHolder(View itemView) {
@@ -27,6 +29,7 @@ public class ListScreenViewHolder extends RecyclerView.ViewHolder{
         mItemDescription = (TextView)itemView.findViewById(R.id.list_item_description);
         mCheckBox = (CheckBox)itemView.findViewById(R.id.checkbox);
         mRelativeLayout = (RelativeLayout)itemView.findViewById(R.id.list_item_relative_layout);
+        mInfoButton = (ImageView)itemView.findViewById(R.id.edit_icon);
     }
 
 
