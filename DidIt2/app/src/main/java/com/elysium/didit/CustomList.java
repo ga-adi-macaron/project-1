@@ -9,15 +9,34 @@ package com.elysium.didit;
 
 public class CustomList {
 
-    private String mText, mText2, mtext3, mText4;
+    private String listName, description;
+    private boolean check;
+
+    public CustomList() {}
 
 
-    public CustomList (String text, String text2, String text3, String text4) {
+    public CustomList (String a, String b, boolean checked) {
 
-        mText = text;
-        mText2 = text2;
-        mtext3 = text3;
-        mText4 = text4;
+        this.listName = a;
+        this.description = b;
+        this.check = checked;
+    }
+
+    public String getListName() {
+        return listName;
+    }
+
+    public String getdescription() {
+        return description;
+    }
+
+    public boolean isChecked() {
+        return check;
+    }
+
+    public void setChecked() {
+        this.check = checked;
+
 
 
 
