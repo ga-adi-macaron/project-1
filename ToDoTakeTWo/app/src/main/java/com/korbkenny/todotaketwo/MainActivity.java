@@ -23,14 +23,14 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity{
+public class MainActivity extends AppCompatActivity {
     private ListView mListView;
     private Button mAddNewList;
     final Context context = this;
     public ArrayAdapter<ToDoList> mArrayAdapter;
     public BigOldListOfLists bigOldListOfLists;
     //~~~~~Base Adapter
-    public BaseAdapterMain mBaseAdapter;
+    //public BaseAdapterMain mBaseAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,11 +40,11 @@ public class MainActivity extends AppCompatActivity{
 
         //REFERENCES
         bigOldListOfLists = BigOldListOfLists.getInstance();
-        mListView = (ListView)findViewById(R.id.LOLView);
-        mAddNewList = (Button)findViewById(R.id.addNewList);
-        mBaseAdapter = new BaseAdapterMain(context, bigOldListOfLists.getListOfLists());
+        mListView = (ListView) findViewById(R.id.LOLView);
+        mAddNewList = (Button) findViewById(R.id.addNewList);
+        //mBaseAdapter = new BaseAdapterMain(context, bigOldListOfLists.getListOfLists());
 
-        mListView.setAdapter(mBaseAdapter);
+        //mListView.setAdapter(mBaseAdapter);
 
 
         //~~~~~Base Adapter
@@ -52,11 +52,6 @@ public class MainActivity extends AppCompatActivity{
 
 
         //class ArrayAdapter
-
-
-
-
-
 
 
         //WHEN ADD-NEW-LIST IS CLICKED
@@ -76,14 +71,14 @@ public class MainActivity extends AppCompatActivity{
                 alertDialogBuilder
                         .setCancelable(false)
                         .setPositiveButton("Add",
-                                new DialogInterface.OnClickListener(){
-                                    public void onClick(DialogInterface dialog,int id){
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
 
-                                        if(userInput.getText().toString().trim().equals("")){
+                                        if (userInput.getText().toString().trim().equals("")) {
                                             Toast.makeText(context, "Shoulda entered text...", Toast.LENGTH_SHORT).show();
-                                        }else{
-                                        bigOldListOfLists.getListOfLists().add(new ToDoList(userInput.getText().toString()));
-                                        mBaseAdapter.notifyDataSetChanged();
+                                        } else {
+                                            bigOldListOfLists.getListOfLists().add(new ToDoList(userInput.getText().toString()));
+                                            mArrayAdapter.notifyDataSetChanged();
                                         }
                                     }
                                 })
@@ -101,54 +96,55 @@ public class MainActivity extends AppCompatActivity{
 
         //if (bigOldListOfLists != null) {
 
-            mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    ToDoList item = (ToDoList) mBaseAdapter.getItem(position);
-                    Intent i = new Intent(MainActivity.this, ListActivity.class);
-                    //WHAT I'M SENDING OVER
-                    i.putExtra("Title", item.getTitle().toString());
-                    i.putExtra("Index", bigOldListOfLists.getListOfLists().indexOf(item));
-                    startActivity(i);
-                }
-            });
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                ToDoList item = (ToDoList) mArrayAdapter.getItem(position);
+                Intent i = new Intent(MainActivity.this, ListActivity.class);
+                //WHAT I'M SENDING OVER
+                i.putExtra("Title", item.getTitle().toString());
+                i.putExtra("Index", bigOldListOfLists.getListOfLists().indexOf(item));
+                startActivity(i);
+            }
+        });
 
-            mListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-                @Override
-                public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
-                    LayoutInflater theInflater = LayoutInflater.from(context);
-                    View thePrompt = theInflater.inflate(R.layout.dialog_remove, null);
-                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+        mListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
+                LayoutInflater theInflater = LayoutInflater.from(context);
+                View thePrompt = theInflater.inflate(R.layout.dialog_remove, null);
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
 
-                    alertDialogBuilder.setView(thePrompt);
+                alertDialogBuilder.setView(thePrompt);
 
-                    alertDialogBuilder
-                            .setPositiveButton("Sure",
-                                new DialogInterface.OnClickListener(){
+                alertDialogBuilder
+                        .setPositiveButton("Sure",
+                                new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int id) {
                                         bigOldListOfLists.getListOfLists().remove(position);
-                                        mBaseAdapter.notifyDataSetChanged();
+                                        mArrayAdapter.notifyDataSetChanged();
                                     }
                                 })
-                            .setNegativeButton("Nah",
-                                    new DialogInterface.OnClickListener() {
-                                        public void onClick(DialogInterface dialog, int id) {
-                                            dialog.cancel();
-                                        }
-                                    });
+                        .setNegativeButton("Nah",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        dialog.cancel();
+                                    }
+                                });
 
-                    AlertDialog alertDialog = alertDialogBuilder.create();
-                    alertDialog.show();
-                    return true;
-                }
-            });
+                AlertDialog alertDialog = alertDialogBuilder.create();
+                alertDialog.show();
+                return true;
+            }
+        });
 
-        }
-      //ARRAY ADAPTER
-   //     mArrayAdapter = new ArrayAdapter<ToDoList>(context,android.R.layout.simple_list_item_1,bigOldListOfLists.getListOfLists());
-     //   mListView.setAdapter(mArrayAdapter);
+
+        //ARRAY ADAPTER
+        mArrayAdapter = new ArrayAdapter<ToDoList>(context, android.R.layout.simple_list_item_1, bigOldListOfLists.getListOfLists());
+        mListView.setAdapter(mArrayAdapter);
 
     }
+}
 //}
 
 
