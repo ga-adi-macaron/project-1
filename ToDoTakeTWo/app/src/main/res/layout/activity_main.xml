@@ -31,10 +31,22 @@
         android:textSize="20sp"
         android:layout_below="@id/theTitle"/>
 
+
     <ListView
         android:id="@+id/LOLView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/addNewList"></ListView>
+        android:layout_below="@id/addNewList"
+
+        ></ListView>
+
+    <!--<Button-->
+        <!--android:id="@+id/DestroyButton"-->
+        <!--android:layout_width="150dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="destroy a list"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:layout_below="@id/ScrollView"/>-->
+
 </RelativeLayout>

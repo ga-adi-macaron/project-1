@@ -17,6 +17,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.Serializable;
 import java.util.List;
@@ -121,6 +122,36 @@ public class MainActivity extends AppCompatActivity{
                     i.putExtra("Title", item.getTitle().toString());
                     i.putExtra("Index", bigOldListOfLists.getListOfLists().indexOf(item));
                     startActivity(i);
+                }
+            });
+
+            mListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+                @Override
+                public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
+                    LayoutInflater theInflater = LayoutInflater.from(context);
+                    View thePrompt = theInflater.inflate(R.layout.dialog_remove, null);
+                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+
+                    alertDialogBuilder.setView(thePrompt);
+
+                    alertDialogBuilder
+                            .setPositiveButton("Sure",
+                                new DialogInterface.OnClickListener(){
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        bigOldListOfLists.getListOfLists().remove(position);
+                                        mArrayAdapter.notifyDataSetChanged();
+                                    }
+                                })
+                            .setNegativeButton("Nah",
+                                    new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int id) {
+                                            dialog.cancel();
+                                        }
+                                    });
+
+                    AlertDialog alertDialog = alertDialogBuilder.create();
+                    alertDialog.show();
+                    return true;
                 }
             });
 

@@ -86,8 +86,8 @@ public class ListActivity extends AppCompatActivity{
                                             Toast.makeText(context, "MUST NAME", Toast.LENGTH_SHORT).show();
                                         }
                                         else{
-                                            mToDoItemLists.add(new ToDoItem(userInputTitle.getText().toString(),
-                                                    userInputDescript.getText().toString()));
+                                            mToDoItemLists.add(new ToDoItem(userInputTitle.getText().toString().toUpperCase(),
+                                                    userInputDescript.getText().toString().toLowerCase()));
                                                     mArrayAdapter2.notifyDataSetChanged();
                                         }
                                     }
@@ -108,9 +108,14 @@ public class ListActivity extends AppCompatActivity{
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 ToDoItem item = mArrayAdapter2.getItem(position);
+                mToDoItemLists.remove(position);
+                mArrayAdapter2.notifyDataSetChanged();
+
 
             }
         });
+
+
 
         mArrayAdapter2 = new ArrayAdapter<ToDoItem>(context,android.R.layout.simple_list_item_2,android.R.id.text1,mToDoItemLists){
             @Override
