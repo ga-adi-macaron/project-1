@@ -12,8 +12,6 @@ public class CustomList {
     private String listName, description;
     private boolean check;
 
-    public CustomList() {}
-
 
     public CustomList (String a, String b, boolean checked) {
 
@@ -34,11 +32,8 @@ public class CustomList {
         return check;
     }
 
-    public void setChecked() {
+    public void setChecked(boolean checked) {
         this.check = checked;
-
-
-
 
     }
 }

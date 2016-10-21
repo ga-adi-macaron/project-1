@@ -1,5 +1,6 @@
 package com.elysium.didit;
 
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,13 +27,25 @@ public class CustomRecyclerView extends RecyclerView.Adapter<CustomViewholder> {
     }
 
     @Override
-    public void onBindViewHolder(CustomViewholder holder, int position) {
-        holder.mList.setText(mCustomList.get(position).customList);
+    public void onBindViewHolder(CustomViewholder holder, final int position) {
+        holder.mList.setText(mCustomList.get(position).getListName());
 
-    } //create clickListener below
+        holder.mMy_Lists.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent movePage = new Intent(v.getContext(), ToDoItems.class); //need new activity to move into
+                movePage.putExtra("List Name", position);
+                v.getContext().startActivity(movePage);
+
+                // create intent to send to next activity
+                // pass along position (int)
+
+            }
+        });
+    }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return mCustomList.size();
     }
 }

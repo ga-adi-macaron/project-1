@@ -24,15 +24,11 @@ public class MainActivity extends AppCompatActivity {
 
         ArrayList<CustomList> customList = new ArrayList<>();
 
-        customList.add(new CustomList("1"));
-        customList.add(new CustomList("2"));
-        customList.add(new CustomList("3"));
-        customList.add(new CustomList("4"));
-        customList.add(new CustomList("5"));
-        }
+        customList.add(new CustomList("List1", "first list", false));
 
         CustomRecyclerView CustomViewholder = new CustomRecyclerView(customList);
 
         mRecyclerView.setAdapter(CustomViewholder);
 
     }
+}
