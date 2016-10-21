@@ -7,8 +7,16 @@ package shuvalov.nikita.todoornottodo;
 public class Errands {
     public String mText;
     public boolean mChecked;
-    public Errands(String text){mText = text;
+    public int imgPath;
+
+    public Errands(String text){
+        if(text.equals("")){
+            mText = "Empty";
+        }else{
+            mText=text;
+        }
     mChecked=false;}
+
 
     public String getText() {return mText;}
 

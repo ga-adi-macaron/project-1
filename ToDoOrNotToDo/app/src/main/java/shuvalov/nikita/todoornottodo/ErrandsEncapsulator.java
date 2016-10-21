@@ -12,6 +12,12 @@ public class ErrandsEncapsulator {
 
     public ErrandsEncapsulator(String title, String description){//ToDo: If I want user to initiate list with errands inside of it already, can add a list as Parameter.
         mTitle= title;
+        if (title.equals("")){
+            mTitle="Default";
+        }
+        else{
+            mTitle=title;
+        }
         if(description.equals("")){
             mDescription=title;
         }else{
