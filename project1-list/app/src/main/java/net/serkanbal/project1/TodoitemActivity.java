@@ -2,6 +2,7 @@ package net.serkanbal.project1;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
@@ -24,6 +25,7 @@ public class TodoitemActivity extends AppCompatActivity {
     List<ToDoItem> mItemList;
     FloatingActionButton mItemFab;
     Singleton mySingleton;
+    TextView mTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,7 +75,13 @@ public class TodoitemActivity extends AppCompatActivity {
         //Set the adapter
         mItemView = (ListView) findViewById(R.id.list_view_items);
         mItemFab = (FloatingActionButton) findViewById(R.id.fabitems);
+        mTextView = (TextView) findViewById(R.id.secondtext);
         mItemView.setAdapter(mItemAdapter);
+
+        if (mItemList.size() > 0) {
+            mTextView.setBackgroundColor(Color.parseColor("#fffafafa"));
+            mTextView.setText("");
+        }
 
         mItemFab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -107,6 +115,8 @@ public class TodoitemActivity extends AppCompatActivity {
                                         }
                                         if (!inputTitleUser.isEmpty() && !inputDescUser.isEmpty()) {
                                             mItemList.add(new ToDoItem(inputTitleUser, result));
+                                            mTextView.setBackgroundColor(Color.parseColor("#fffafafa"));
+                                            mTextView.setText("");
                                             mItemAdapter.notifyDataSetChanged();
                                         } else if (inputTitleUser.isEmpty() && !inputDescUser.isEmpty()) {
                                             Toast.makeText(TodoitemActivity.this,

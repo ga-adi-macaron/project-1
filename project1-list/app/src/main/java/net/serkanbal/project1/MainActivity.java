@@ -2,6 +2,7 @@ package net.serkanbal.project1;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     List<ToDoList> mToDoList;
     FloatingActionButton mFab;
     Singleton mySingleton;
+    TextView mTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
         //Set the adapter
         mToDoListListView = (ListView) findViewById(R.id.list_view);
         mFab = (FloatingActionButton) findViewById(R.id.fab);
+        mTextView = (TextView) findViewById(R.id.maintext);
         mToDoListListView.setAdapter(mToDoListAdapter);
 
         mFab.setOnClickListener(new View.OnClickListener() {
@@ -95,6 +98,8 @@ public class MainActivity extends AppCompatActivity {
                                                     Toast.LENGTH_SHORT).show();
                                         } else {
                                             mToDoList.add(new ToDoList(inputUser));
+                                            mTextView.setBackgroundColor(Color.parseColor("#fffafafa"));
+                                            mTextView.setText("");
                                             mToDoListAdapter.notifyDataSetChanged();
                                         }
                                     }

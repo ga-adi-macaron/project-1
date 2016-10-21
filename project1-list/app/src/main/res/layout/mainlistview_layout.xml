@@ -3,7 +3,9 @@
           android:id="@android:id/text1"
           android:paddingTop="11dip"
           android:paddingBottom="11dip"
-          android:textSize="22sp"
+          android:paddingLeft="16dip"
+          android:paddingRight="16dip"
+          android:textSize="24sp"
           android:textStyle="bold"
           android:layout_width="fill_parent"
           android:layout_height="wrap_content" />
