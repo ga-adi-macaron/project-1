@@ -56,7 +56,10 @@ public class ListActivity extends AppCompatActivity{
         mListOfItems = (ListView) findViewById(R.id.InsideListView);
         semiBigListofListsIguess = BigOldListOfLists.getInstance();
         mToDoItemLists = new ArrayList<ToDoItem>();
+
         mBackButton = (Button) findViewById(R.id.BackButton);
+        current = semiBigListofListsIguess.getListOfLists().get(index);
+        mToDoItemLists = current.getItems();
 
         //mToDoItemLists = bigOldListOfLists.getListOfLists().get(index);
 
@@ -107,12 +110,15 @@ public class ListActivity extends AppCompatActivity{
             }
         });
 
-        mListOfItems.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        mListOfItems.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+
+
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 ToDoItem item = mArrayAdapter2.getItem(position);
                 mToDoItemLists.remove(position);
                 mArrayAdapter2.notifyDataSetChanged();
+                return true;
 
 
             }
@@ -138,6 +144,7 @@ public class ListActivity extends AppCompatActivity{
         mBackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                current.setItems(mToDoItemLists);
                 ListActivity.this.finish();
             }
         });
