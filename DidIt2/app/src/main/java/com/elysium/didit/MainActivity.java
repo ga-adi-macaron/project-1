@@ -24,10 +24,14 @@ public class MainActivity extends AppCompatActivity {
 
         ArrayList<CustomList> customList = new ArrayList<>();
 
-        customList.add(new CustomList());
+        customList.add(new CustomList("1"));
+        customList.add(new CustomList("2"));
+        customList.add(new CustomList("3"));
+        customList.add(new CustomList("4"));
+        customList.add(new CustomList("5"));
         }
 
-        CustomRecyclerView CustomRecyclerViewholder = new CustomRecyclerView(customList);
+        CustomRecyclerView CustomRecyclerViewholder = new CustomRecyclerView(CustomList);
 
         mRecyclerView.setAdapter(CustomViewholder);
 
