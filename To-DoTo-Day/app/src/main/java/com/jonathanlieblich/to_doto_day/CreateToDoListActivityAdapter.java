@@ -14,8 +14,8 @@ import java.util.List;
 public class CreateToDoListActivityAdapter extends RecyclerView.Adapter<ToDoItemViewHolder> {
     List<ToDoItem> mToDoItems;
 
-    public CreateToDoListActivityAdapter(ToDoList toDoList) {
-        mToDoItems = toDoList.getToDoItems();
+    public CreateToDoListActivityAdapter(List<ToDoItem> toDoList) {
+        mToDoItems = ListOfLists.getInstance().getToDoLists();
     }
 
     @Override
@@ -29,7 +29,7 @@ public class CreateToDoListActivityAdapter extends RecyclerView.Adapter<ToDoItem
 
     @Override
     public void onBindViewHolder(ToDoItemViewHolder holder, int position) {
-        ToDoItem toDoItem = mToDoItems.get(position);
+        ToDoItem toDoItem = ListOfLists.getInstance().getToDoLists().get(position).getToDoItems().get(position);
 
         holder.mItemName.setText(toDoItem.getTitle());
 //        holder.mItemDescription.setText(toDoItem.getDescription());
@@ -37,6 +37,6 @@ public class CreateToDoListActivityAdapter extends RecyclerView.Adapter<ToDoItem
 
     @Override
     public int getItemCount() {
-        return mToDoItems.size();
+        return ListOfLists.getInstance().getToDoLists().size();
     }
 }

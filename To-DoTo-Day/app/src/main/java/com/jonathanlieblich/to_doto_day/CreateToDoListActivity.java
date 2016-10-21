@@ -14,36 +14,34 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CreateToDoListActivity extends AppCompatActivity {
-    private EditText mEditTitle, mEditPriority;
+    private EditText mEditTitle, mEditDescription;
     private Button mSave, mClear;
-    private RecyclerView mListItems;
-    private ToDoList mToDoList;
+    private RecyclerView mListedLists;
+    private List<ToDoItem> mToDoList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_to_do_list);
 
-//        mToDoList = ListOfLists.getInstance().getToDoList(position);
+        mListedLists = (RecyclerView)findViewById(R.id.item_list);
 
-        mListItems = (RecyclerView)findViewById(R.id.item_list);
-
-        LinearLayoutManager layoutManager = new LinearLayoutManager(mListItems.getContext());
-        mListItems.setLayoutManager(layoutManager);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(mListedLists.getContext());
+        mListedLists.setLayoutManager(layoutManager);
 
         mEditTitle = (EditText)findViewById(R.id.list_name);
-        mEditPriority = (EditText)findViewById(R.id.priority);
+        mEditDescription = (EditText)findViewById(R.id.priority);
 
         mSave = (Button)findViewById(R.id.save_button);
         mClear = (Button)findViewById(R.id.clear_button);
 
         Intent intent = getIntent();
 
-        mEditTitle.setHint("List Title");
-        mEditTitle.setText(intent.getStringExtra("List Title"));
+        mEditTitle.setHint("Item Title");
+        mEditTitle.setText(intent.getStringExtra("Item Title"));
 
-        mEditPriority.setHint("List Priority");
-        mEditPriority.setText(intent.getStringExtra("List Priority"));
+        mEditDescription.setHint("Item Description");
+        mEditDescription.setText(intent.getStringExtra("Item Description"));
 
         mSave.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,10 +50,10 @@ public class CreateToDoListActivity extends AppCompatActivity {
                 if(mEditTitle.getText().length() < 1) {
                     mEditTitle.setError("Title Cannot Be Empty");
                 } else {
-                    mToDoList.addNewItem(mEditTitle.getText().toString(), "hi");
+                    mToDoList.get(new ToDoListAdapter(mToDoList));
                 }
                 mEditTitle.setText("");
-//                mEditPriority.setText("");
+                mEditDescription.setText("");
             }
         });
 
@@ -64,16 +62,10 @@ public class CreateToDoListActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //Clear EditTexts
                 mEditTitle.setText("");
-//                mEditPriority.setText("");
+                mEditDescription.setText("");
             }
         });
 
-        List<ToDoItem> testList = new ArrayList<>();
-
-        testList.add(new ToDoItem("title1", "description1"));
-        testList.add(new ToDoItem("title2", "description2"));
-        mToDoList = new ToDoList("TITLE", testList, 5);
-
-        mListItems.setAdapter(new CreateToDoListActivityAdapter(mToDoList));
+        mListedLists.setAdapter(new CreateToDoListActivityAdapter(mToDoList));
     }
 }

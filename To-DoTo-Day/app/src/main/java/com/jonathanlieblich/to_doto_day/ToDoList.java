@@ -12,7 +12,7 @@ public class ToDoList {
     private boolean mListComplete;
     private int mListPriority;
 
-    public ToDoList(String title, List toDoItems, int listPriority) {
+    public ToDoList(String title, List<ToDoItem> toDoItems, int listPriority) {
         mListPriority = listPriority;
         mListComplete = false;
         mListTitle = title;
