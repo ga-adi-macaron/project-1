@@ -64,7 +64,7 @@ public class MainRecyclerAdapter extends RecyclerView.Adapter<ListTitleHolder> {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 MasterLister.removeToDoList(position);
-                                notifyItemChanged(position);
+                                notifyItemRemoved(position);
                                 dialog.cancel();
                             }
                         })

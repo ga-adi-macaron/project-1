@@ -10,10 +10,12 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 public class SubListActivity extends AppCompatActivity {
     private RecyclerView subListRecyView;
     private LinearLayoutManager linearLayoutManager;
-    private Button addItemButt, backButt;
+    private Button addItemButt, backButt, removeButt;
     private int mPosition;
     private TextView listNameView;
 
@@ -34,15 +36,26 @@ public class SubListActivity extends AppCompatActivity {
 
         addItemButt = (Button)findViewById(R.id.additem);
         backButt = (Button)findViewById(R.id.backButt);
+        removeButt = (Button)findViewById(R.id.removebutt);
 
+        removeButt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ArrayList<Errands> errandList= MasterLister.getErrEncapInPosition(mPosition).getErrandsList();
+                for (int i = 0; i<errandList.size();i++){
+                    if(errandList.get(i).getCheckedStatus()){
+
+                    }
+                }
+
+            }
+        });
         backButt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
         });
-
-
 
         addItemButt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,7 +65,7 @@ public class SubListActivity extends AppCompatActivity {
             }
         });
 
-        SubListRecyclerAdapter subListRecAdp = new SubListRecyclerAdapter(MasterLister.retriveToDoLists().get(mPosition).getErrandsList());
+        SubListRecyclerAdapter subListRecAdp = new SubListRecyclerAdapter(MasterLister.retriveToDoLists().get(mPosition).getErrandsList(),mPosition);
         subListRecyView.setAdapter(subListRecAdp);
     }
 

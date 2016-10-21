@@ -10,7 +10,7 @@ public class ErrandsEncapsulator {
     private String mTitle, mDescription;
     private ArrayList<Errands> mErrandList;
 
-    public ErrandsEncapsulator(String title, String description){//ToDo: If we want user to initiate list with errands inside of it already, we can add a list as Parameter.
+    public ErrandsEncapsulator(String title, String description){//ToDo: If I want user to initiate list with errands inside of it already, can add a list as Parameter.
         mTitle= title;
         if(description.equals("")){
             mDescription=title;
@@ -42,6 +42,9 @@ public class ErrandsEncapsulator {
     public void appendErrand(Errands errand){
         mErrandList.add(errand);
     }
+
+    public void removeErrandByPosition(int position){mErrandList.remove(position);}
+
 
     public ArrayList<Errands> getErrandsList(){
         return mErrandList;

@@ -22,7 +22,7 @@
         android:id="@+id/additem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add Errand"
+        android:text="Add new\nErrand"
         android:layout_below="@id/listnameview"
         android:layout_alignParentRight="true"
         android:layout_marginRight="16sp"/>
@@ -31,8 +31,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/listnameview"
-        android:text="Back to lists"
+        android:text="Return\n to lists"
         android:layout_marginLeft="16sp"/>
+    <Button
+        android:id="@+id/removebutt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/additem"
+        android:layout_centerHorizontal="true"
+        android:text="Remove \n completed"
+        />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/errandRecycler"

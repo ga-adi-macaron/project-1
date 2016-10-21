@@ -21,7 +21,11 @@ public class SubListRecyclerAdapter extends RecyclerView.Adapter<SubListHolder> 
     private List<Errands> mErrandsList;
     private CheckBox checkBox;
     private RelativeLayout relativeLayout;
-    public SubListRecyclerAdapter(List<Errands> errandsList) {mErrandsList = errandsList;}
+    private int mPosInSuperList;
+    private TextView noteView;
+    public SubListRecyclerAdapter(List<Errands> errandsList,int positionInSuperList) {
+        mErrandsList = errandsList;
+        mPosInSuperList = positionInSuperList;}
 
     @Override
     public SubListHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -31,19 +35,23 @@ public class SubListRecyclerAdapter extends RecyclerView.Adapter<SubListHolder> 
 
     @Override
     public void onBindViewHolder(SubListHolder holder, final int position) { //
-        TextView noteView = (TextView)holder.itemView.findViewById(R.id.note);
+        noteView = (TextView)holder.itemView.findViewById(R.id.note);
         checkBox = (CheckBox)holder.itemView.findViewById(R.id.checkbox);
         relativeLayout = (RelativeLayout)holder.itemView.findViewById(R.id.sublistLayout);
+        mErrandsList = MasterLister.getErrEncapInPosition(mPosInSuperList).getErrandsList();
 
         checkBox.setChecked(mErrandsList.get(position).getCheckedStatus());
         noteView.setText(mErrandsList.get(position).getText());
-        relativeLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mErrandsList.get(position).toggleChecked();
-                notifyItemChanged(position);
-            }
-        });
+        View.OnClickListener toggleCheckbox = new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    MasterLister.getErrEncapInPosition(mPosInSuperList).getErrandsList().get(position).toggleChecked();
+                    notifyItemChanged(position);
+                }
+        };
+        relativeLayout.setOnClickListener(toggleCheckbox);
+        checkBox.setOnClickListener(toggleCheckbox);
+
         relativeLayout.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
@@ -51,7 +59,6 @@ public class SubListRecyclerAdapter extends RecyclerView.Adapter<SubListHolder> 
                 LayoutInflater layoutInflater = new LayoutInflater(v.getContext()) {
                     @Override
                     public LayoutInflater cloneInContext(Context newContext) {
-
                         return null;
                     }
                 };
@@ -61,7 +68,7 @@ public class SubListRecyclerAdapter extends RecyclerView.Adapter<SubListHolder> 
                         .setPositiveButton("Delete", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                mErrandsList.remove(position);
+                                MasterLister.getErrEncapInPosition(mPosInSuperList).removeErrandByPosition(position);
                                 notifyItemRemoved(position);
                             }
                         }).setNegativeButton("Nevermind", new DialogInterface.OnClickListener() {
