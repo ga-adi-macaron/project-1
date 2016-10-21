@@ -13,7 +13,7 @@
 
     <EditText
         android:maxLines="1"
-        android:inputType="text"
+        android:inputType="textCapSentences"
         android:hint="NAME"
         android:id="@+id/editTextDialogUserInput"
         android:layout_width="match_parent"

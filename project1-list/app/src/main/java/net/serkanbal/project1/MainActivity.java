@@ -90,10 +90,11 @@ public class MainActivity extends AppCompatActivity {
                                         EditText input = (EditText) promptsView.findViewById(R.id.editTextDialogUserInput);
                                         String inputUser = input.getText().toString();
                                         if (inputUser.isEmpty()) {
-                                            input.setError("Be logical!");
-                                            Toast.makeText(MainActivity.this, "Can't be empty!", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(MainActivity.this,
+                                                    "List Name can't be empty!",
+                                                    Toast.LENGTH_SHORT).show();
                                         } else {
-                                            mToDoList.add(new ToDoList(inputUser.toUpperCase()));
+                                            mToDoList.add(new ToDoList(inputUser));
                                             mToDoListAdapter.notifyDataSetChanged();
                                         }
                                     }

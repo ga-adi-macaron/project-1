@@ -59,7 +59,6 @@ public class TodoitemActivity extends AppCompatActivity {
                 if (convertView == null) {
                     LayoutInflater inflater = LayoutInflater.from(TodoitemActivity.this);
                     convertView = inflater.inflate(R.layout.secondaryviewlist_layout, null);
-//                    convertView = inflater.inflate(android.R.layout.simple_list_item_2, null);
                 }
 
                 TextView textView = (TextView) convertView.findViewById(android.R.id.text1);
@@ -97,16 +96,30 @@ public class TodoitemActivity extends AppCompatActivity {
                                         String inputTitleUser = inputTitle.getText().toString();
                                         EditText inputDesc = (EditText) promptsView.findViewById(R.id.edititemdesc);
                                         String inputDescUser = inputDesc.getText().toString();
-
-                                        if (!inputTitleUser.isEmpty() && !inputDescUser.isEmpty()) {
-                                            mItemList.add(new ToDoItem(inputTitleUser.toUpperCase(), inputDescUser));
-
-                                            mItemAdapter.notifyDataSetChanged();
+                                        String result = "";
+                                        if (inputDescUser.contains("\n") == true) {
+                                            String[] split = inputDescUser.split("\n+");
+                                            for (int i = split.length - 1; i >= 0; i--) {
+                                                result = (i + 1) + ". " + split[i] + "\n" + result;
+                                            }
                                         } else {
-                                            inputTitle.setError("Be logical!");
-                                            inputDesc.setError("Be logical!");
-                                            Toast.makeText(TodoitemActivity.this, "Can't be empty!", Toast.LENGTH_SHORT).show();
-
+                                            result = inputDescUser;
+                                        }
+                                        if (!inputTitleUser.isEmpty() && !inputDescUser.isEmpty()) {
+                                            mItemList.add(new ToDoItem(inputTitleUser, result));
+                                            mItemAdapter.notifyDataSetChanged();
+                                        } else if (inputTitleUser.isEmpty() && !inputDescUser.isEmpty()) {
+                                            Toast.makeText(TodoitemActivity.this,
+                                                    "Title can't be empty!",
+                                                    Toast.LENGTH_SHORT).show();
+                                        } else if (inputDescUser.isEmpty() && !inputTitleUser.isEmpty()) {
+                                            Toast.makeText(TodoitemActivity.this,
+                                                    "Description can't be empty!",
+                                                    Toast.LENGTH_SHORT).show();
+                                        } else if (inputDescUser.isEmpty() && inputTitleUser.isEmpty()) {
+                                            Toast.makeText(TodoitemActivity.this,
+                                                    "Title & Description can't be empty!"
+                                                    , Toast.LENGTH_SHORT).show();
                                         }
                                     }
                                 })

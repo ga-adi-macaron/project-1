@@ -12,6 +12,8 @@
         android:text="Enter To-Do Item's Name"/>
 
     <EditText
+        android:maxLines="1"
+        android:inputType="textCapSentences"
         android:textStyle="bold"
         android:hint="TITLE"
         android:id="@+id/edititemtitle"
