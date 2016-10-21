@@ -30,11 +30,19 @@ public class CreateToDoListActivityAdapter extends RecyclerView.Adapter<ToDoItem
     }
 
     @Override
-    public void onBindViewHolder(ToDoItemViewHolder holder, int position) {
+    public void onBindViewHolder(final ToDoItemViewHolder holder, final int position) {
         final ToDoItem toDoItem = mToDoItems.get(position);
 
         holder.mItemName.setText(toDoItem.getTitle());
         holder.mItemDescription.setText(toDoItem.getDescription());
+
+        holder.mToDoItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mToDoItems.remove(holder.getAdapterPosition());
+                notifyItemRemoved(holder.getAdapterPosition());
+            }
+        });
     }
 
     @Override
