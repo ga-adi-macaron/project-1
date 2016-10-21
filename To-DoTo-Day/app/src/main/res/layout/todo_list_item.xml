@@ -36,14 +36,4 @@
         android:layout_below="@id/edit_button"
         android:background="@android:drawable/ic_delete" />
 
-    <android.support.v7.widget.AppCompatImageView
-        android:id="@+id/list_info"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_toLeftOf="@id/edit_button"
-        android:layout_centerVertical="true"
-        android:layout_marginRight="24dp"
-        android:src="@android:drawable/ic_dialog_info"
-        android:tint="@color/colorPrimaryDark"/>
-
 </RelativeLayout>

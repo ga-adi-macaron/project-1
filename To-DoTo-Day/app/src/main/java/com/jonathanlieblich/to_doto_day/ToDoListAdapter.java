@@ -55,25 +55,13 @@ public class ToDoListAdapter extends RecyclerView.Adapter<ToDoListViewHolder> {
                         mToDoLister.remove(position);
                         notifyItemChanged(position);
                         break;
-                    case(R.id.list_info):
-                        //Open an alert dialog (list name, priority level, close button)
-                        AlertDialog.Builder listInfo = new AlertDialog.Builder(holder.mToDoListLayout.getContext());
-                        listInfo.setTitle(mToDoLister.get(position).getListTitle());
-                        listInfo.show();
-                        break;
-                    case(R.id.recycler_list):
-                        //Alert dialog with recycler view of list items
-//                        AlertDialog.Builder showItems = new AlertDialog.Builder(holder.mToDoListLayout.getContext());
-//                        showItems.setTitle(mToDoLister.get(position).getListTitle());
-                        break;
                     default:
-                        Toast.makeText(v.getContext(), "Whoops", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(v.getContext(), "You missed the button...", Toast.LENGTH_SHORT).show();
                 }
             }
         };
         holder.mEditButton.setOnClickListener(onClickListener);
         holder.mDeleteButton.setOnClickListener(onClickListener);
-        holder.mListInfo.setOnClickListener(onClickListener);
         holder.mToDoListLayout.setOnClickListener(onClickListener);
     }
 
