@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -17,6 +18,8 @@ public class CustomViewholder extends RecyclerView.ViewHolder {
     public CheckBox mCheckbox, mCheckbox2;
     public RelativeLayout mMy_Lists;
 
+    public EditText mentry;
+
     public CustomViewholder(View itemView) {
         super(itemView);
 
@@ -27,6 +30,8 @@ public class CustomViewholder extends RecyclerView.ViewHolder {
 
         mCheckbox = (CheckBox) itemView.findViewById(R.id.Checkbox);
         mCheckbox2 = (CheckBox) itemView.findViewById(R.id.Checkbox1);
+
+        mentry = (EditText) itemView.findViewById(R.id.entry);
 
     }
 }

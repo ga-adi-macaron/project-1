@@ -27,13 +27,13 @@ public class CustomRecyclerView extends RecyclerView.Adapter<CustomViewholder> {
     }
 
     @Override
-    public void onBindViewHolder(CustomViewholder holder, final int position) {
+    public void onBindViewHolder(final CustomViewholder holder, final int position) {
         holder.mList.setText(mCustomList.get(position).getListName());
 
         holder.mMy_Lists.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent movePage = new Intent(v.getContext(), ToDoItems.class); //need new activity to move into
+                Intent movePage = new Intent(v.getContext(), SecondActivity.class); //need new activity to move into
                 movePage.putExtra("List Name", position);
                 v.getContext().startActivity(movePage);
 
@@ -42,6 +42,7 @@ public class CustomRecyclerView extends RecyclerView.Adapter<CustomViewholder> {
 
             }
         });
+
     }
 
     @Override

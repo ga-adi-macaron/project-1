@@ -9,7 +9,7 @@ package com.elysium.didit;
 
 public class CustomList {
 
-    private String listName, description;
+    private String listName, description, entry;
     private boolean check;
 
 
@@ -18,6 +18,7 @@ public class CustomList {
         this.listName = a;
         this.description = b;
         this.check = checked;
+        this.entry = d;
     }
 
     public String getListName() {
@@ -34,6 +35,10 @@ public class CustomList {
 
     public void setChecked(boolean checked) {
         this.check = checked;
+    }
+
+    public String getEntry() {
+        return entry;
 
     }
 }
