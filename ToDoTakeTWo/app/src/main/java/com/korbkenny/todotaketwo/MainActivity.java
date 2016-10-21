@@ -99,12 +99,12 @@ public class MainActivity extends AppCompatActivity{
             }
         });
 
-        if (bigOldListOfLists != null) {
+        //if (bigOldListOfLists != null) {
 
             mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    ToDoList item = mArrayAdapter.getItem(position);
+                    ToDoList item = (ToDoList) mBaseAdapter.getItem(position);
                     Intent i = new Intent(MainActivity.this, ListActivity.class);
                     //WHAT I'M SENDING OVER
                     i.putExtra("Title", item.getTitle().toString());
@@ -149,7 +149,7 @@ public class MainActivity extends AppCompatActivity{
      //   mListView.setAdapter(mArrayAdapter);
 
     }
-}
+//}
 
 
 /**

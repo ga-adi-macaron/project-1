@@ -21,7 +21,7 @@ public class BaseAdapterMain extends BaseAdapter
     Context context;
 
     public BaseAdapterMain (Context context, ArrayList<ToDoList> toDoListArray){
-        //toDoListArray = bigOldListOfLists.getListOfLists();
+        //
         this.toDoListArray = toDoListArray;
         this.context = context;
         inflater = LayoutInflater.from(this.context);
@@ -34,8 +34,9 @@ public class BaseAdapterMain extends BaseAdapter
 
     @Override
     public Object getItem(int position) {
-        return toDoListArray.get(position);
-    }
+            return toDoListArray.get(position);
+        }
+
 
     @Override
     public long getItemId(int position) {
