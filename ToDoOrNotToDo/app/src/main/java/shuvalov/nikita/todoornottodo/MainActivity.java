@@ -22,6 +22,7 @@ import java.util.List;
 //ToDo:Add a longclickListener in SubListRecyclerAdapter to allow user to remove listItems. ToDo:Add warning dialog to this as well. Can probably use previous warning alert dialog.
 //ToDo:Persist Data with either SharedPreferences or OutputFile.
 //ToDo:Give user option to edit SuperList info such as Title or description in warning alert Dialog.
+//ToDo:Make sure checkboxes don't become unchecked when changing orientation.
 
 
 public class MainActivity extends AppCompatActivity {
