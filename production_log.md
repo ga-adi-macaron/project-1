@@ -25,3 +25,5 @@ Item Features (by section):
         Sidebar Menu - Settings for push notification reminders, access to 'My Lists'(?), (NOT DOING THIS MOST LIKELY)
         
 The app builds in a very basic way, but I can't figure out how to get my second activity to render on the screen....
+
+!!!! The App is now broken beyond when trying to progress beyond the first screen. The only things that are functional are the EditText field, and the Checkbox at the moment -_- !!!!
