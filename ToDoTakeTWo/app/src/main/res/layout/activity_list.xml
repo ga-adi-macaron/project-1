@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="16dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp">
+
+    <TextView
+        android:id="@+id/InsideTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="45sp"
+        android:textStyle="bold"
+        android:fontFamily="sans-serif-condensed"
+        android:gravity="center"
+        android:text="Sweet"/>
+    <Button
+        android:id="@+id/insideAddItemButton"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/InsideTextView"
+        android:text="Add item"
+        android:textSize="20sp"
+        android:fontFamily="sans-serif-condensed"
+        android:layout_centerHorizontal="true"/>
+
+    <ListView
+        android:id="@+id/InsideListView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/insideAddItemButton"></ListView>
+
+
+</RelativeLayout>
