@@ -39,9 +39,35 @@ public class MainActivity extends AppCompatActivity {
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                workingIndex = position;
-                startActivityForResult(intent, LIST_PAGE);
+            public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+
+                builder.setTitle("What do you want to do?");
+
+
+                builder.setPositiveButton("Remove List", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        ListManager listManager = ListManager.getInstance();
+                        listManager.removeList(position);
+                        title.remove(position);
+
+                        arrayAdapter.notifyDataSetChanged();
+                    }
+                });
+
+                builder.setNegativeButton("View List", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        workingIndex = position;
+                        startActivityForResult(intent, LIST_PAGE);
+                    }
+                });
+
+                AlertDialog dialog = builder.create();
+                dialog.show();
+
             }
         });
 
@@ -49,8 +75,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+
                 builder.setTitle("Enter List Name");
                 final EditText name = new EditText(MainActivity.this);
+
                 name.setHint("My List");
                 builder.setView(name);
 
@@ -58,12 +86,21 @@ public class MainActivity extends AppCompatActivity {
                 builder.setPositiveButton("CONFIRM", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        title.add(name.getText().toString());
-                        ListManager.getInstance().addList(new ToDoList(name.getText().toString(),
-                                ListManager.getInstance().getIndex()));
+                        ListManager listManager = ListManager.getInstance();
+
+                        String listTitle = name.getText().toString();
+
+                        if (listTitle.equals("") || listTitle == null) {
+                            listTitle = "My list";
+                        }
+                        title.add(listTitle);
+
+                        listManager.addList(new ToDoList(listTitle, listManager.getIndex()));
+
                         arrayAdapter.notifyDataSetChanged();
                     }
                 });
+
                 builder.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {

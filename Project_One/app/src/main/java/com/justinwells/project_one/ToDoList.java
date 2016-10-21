@@ -37,4 +37,17 @@ public class ToDoList {
     public int getSize () {
         return toDoList.size();
     }
+
+    public List<ToDoItem> getToDoList() {
+        return toDoList;
+    }
+
+    public boolean isDone (int index) {
+        return toDoList.get(index).isDone();
+    }
+
+    public void removeItem (int index) {
+       if (index > -1 && index < toDoList.size())
+            toDoList.remove(index);
+    }
 }
