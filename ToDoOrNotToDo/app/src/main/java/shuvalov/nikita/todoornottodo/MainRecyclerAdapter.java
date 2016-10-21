@@ -21,6 +21,8 @@ import java.util.List;
 public class MainRecyclerAdapter extends RecyclerView.Adapter<ListTitleHolder> {
     private List<ErrandsEncapsulator> mErrandsEncapsulatorList;
 
+
+
     public MainRecyclerAdapter(List<ErrandsEncapsulator> errandsEncapsulatorList) {mErrandsEncapsulatorList=errandsEncapsulatorList;}
 
     @Override
@@ -43,8 +45,8 @@ public class MainRecyclerAdapter extends RecyclerView.Adapter<ListTitleHolder> {
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), SubListActivity.class);
                 intent.putExtra("Position", position);
+                intent.putExtra("ListName", mErrandsEncapsulatorList.get(position).getTitle());
                 v.getContext().startActivity(intent);
-                Toast.makeText(v.getContext(), "This is clickable", Toast.LENGTH_SHORT).show();
             }
         });
         View.OnLongClickListener onLongClickListener = new View.OnLongClickListener() {

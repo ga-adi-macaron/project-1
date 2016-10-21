@@ -1,6 +1,7 @@
 package shuvalov.nikita.todoornottodo;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AlertDialog;
@@ -10,6 +11,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Adapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -19,11 +21,9 @@ import java.util.List;
 
 
 //ToDo:Add imageView to title_form with the data being held in ErrandsEncapsulator for the icons.
-//ToDo:Add a longclickListener in SubListRecyclerAdapter to allow user to remove listItems. ToDo:Add warning dialog to this as well. Can probably use previous warning alert dialog.
 //ToDo:Persist Data with either SharedPreferences or OutputFile.
 //ToDo:Give user option to edit SuperList info such as Title or description in warning alert Dialog.
-//ToDo:Make sure checkboxes don't become unchecked when changing orientation.
-
+//ToDo:In SubListActivity add button to remove all checked tasks.
 
 public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
@@ -75,5 +75,35 @@ public class MainActivity extends AppCompatActivity {
 
         recyclerView.setAdapter(new MainRecyclerAdapter(masterLister.retriveToDoLists()));
     }
+
+    //ToDo: turn the Warning AlertDialog into a public static final method to make the code neater.
+//    public static final AlertDialog buildWarn(Adapter adapter, View v){
+//        AlertDialog.Builder adb = new AlertDialog.Builder(v.getContext());
+//        LayoutInflater layoutInflater = new LayoutInflater(v.getContext()) {
+//            @Override
+//            public LayoutInflater cloneInContext(Context newContext) {
+//
+//                return null;
+//            }
+//        };
+//
+//        adb.setView(layoutInflater.inflate(R.layout.warn_form, null))
+//                .setMessage("Delete item?")
+//                .setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        mErrandsList.remove(position);
+//                        notifyItemRemoved(position);
+//                    }
+//                }).setNegativeButton("Nevermind", new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialog, int which) {
+//                dialog.cancel();
+//            }
+//        });
+//        AlertDialog warnAlert = adb.create();
+//        warnAlert.show();
+//
+//    }
 
 }

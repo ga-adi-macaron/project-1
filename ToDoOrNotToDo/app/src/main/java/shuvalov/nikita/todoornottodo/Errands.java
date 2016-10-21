@@ -6,9 +6,17 @@ package shuvalov.nikita.todoornottodo;
 
 public class Errands {
     public String mText;
-    public Errands(String text){mText = text;}
+    public boolean mChecked;
+    public Errands(String text){mText = text;
+    mChecked=false;}
 
     public String getText() {return mText;}
 
     public void setText(String text) {mText = text;}
+
+    public void toggleChecked(){
+        mChecked = !mChecked;
+    }
+    public boolean getCheckedStatus(){return mChecked;}
+
 }

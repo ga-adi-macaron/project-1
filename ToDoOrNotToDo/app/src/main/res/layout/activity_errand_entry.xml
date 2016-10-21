@@ -10,11 +10,19 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="shuvalov.nikita.todoornottodo.ErrandEntryActivity">
     <Button
+        android:id="@+id/cancelButt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cancel"
+        />
+    <Button
         android:id="@+id/submitErrandButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="RETURN Errand"
-        android:layout_alignParentTop="true"/>
+        android:text="Add Errand"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@id/cancelButt"/>
+
 
     <EditText
         android:id="@+id/uiText"

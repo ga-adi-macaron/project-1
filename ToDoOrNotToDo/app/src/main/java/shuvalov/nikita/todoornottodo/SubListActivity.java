@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class SubListActivity extends AppCompatActivity {
@@ -14,6 +15,7 @@ public class SubListActivity extends AppCompatActivity {
     private LinearLayoutManager linearLayoutManager;
     private Button addItemButt, backButt;
     private int mPosition;
+    private TextView listNameView;
 
 
     @Override
@@ -21,9 +23,14 @@ public class SubListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sub_list);
 
+        Intent superListIntent = getIntent();
+        mPosition=superListIntent.getIntExtra("Position",-1);
+
         subListRecyView = (RecyclerView) findViewById(R.id.errandRecycler);
         linearLayoutManager = new LinearLayoutManager(SubListActivity.this, LinearLayoutManager.VERTICAL, false);
         subListRecyView.setLayoutManager(linearLayoutManager);
+        listNameView = (TextView)findViewById(R.id.listnameview);
+        listNameView.setText(superListIntent.getStringExtra("ListName"));
 
         addItemButt = (Button)findViewById(R.id.additem);
         backButt = (Button)findViewById(R.id.backButt);
@@ -35,8 +42,7 @@ public class SubListActivity extends AppCompatActivity {
             }
         });
 
-        Intent superListIntent = getIntent();
-        mPosition=superListIntent.getIntExtra("Position",-1);
+
 
         addItemButt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,8 +58,8 @@ public class SubListActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if(requestCode == MainActivity.RETRIEVE_CONTENT){
-            if(resultCode==RESULT_OK){
+        if(resultCode==RESULT_OK){
+            if(requestCode == MainActivity.RETRIEVE_CONTENT){
                 if(mPosition==-1){
                     Toast.makeText(this, "There was an out of bounds issue", Toast.LENGTH_SHORT).show();
                 }else{
@@ -61,6 +67,9 @@ public class SubListActivity extends AppCompatActivity {
                     subListRecyView.getAdapter().notifyItemChanged(mPosition);
                 }
             }
+            }
+        else{
+            Toast.makeText(this, "Add Note Cancelled", Toast.LENGTH_SHORT).show();
         }
 
     }
