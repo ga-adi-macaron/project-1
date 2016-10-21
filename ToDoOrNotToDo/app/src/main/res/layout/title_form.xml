@@ -2,13 +2,13 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/superlistitem"
     android:layout_width="match_parent" android:layout_height="wrap_content"
-    android:background="@color/bluebg"
     android:layout_margin="10sp">
 
     <ImageView
         android:id="@+id/iconview"
         android:layout_width="55sp"
-        android:layout_height="55sp" />
+        android:layout_height="55sp"
+        android:background="@color/colorPrimary"/>
 
     <TextView
         android:id="@+id/listTitle"
@@ -18,9 +18,9 @@
         android:text="This is the list title"
         android:layout_marginLeft="20sp"
         android:layout_marginTop="10sp"
-        android:layout_marginRight="20sp"
         android:textColor="@color/text"
         android:textSize="20sp"
+        android:background="@color/bluebg"
         />
 
     <TextView
@@ -31,5 +31,11 @@
         android:layout_below="@id/listTitle"
         android:text="This is the description"
         android:paddingBottom="8sp"
-        android:textColor="@color/subtext"/>
+        android:textColor="@color/subtext"
+        android:background="@color/bluebg"/>
+    <Space
+        android:layout_below="@id/descript"
+        android:layout_width="match_parent"
+        android:layout_height="10sp"
+        android:background="#FFF"/>
 </RelativeLayout>
