@@ -8,25 +8,26 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.scottlindley.muchtodowithoutado.Activities.ToDoListActivity;
-import com.scottlindley.muchtodowithoutado.JavaObjects.OnSwipeTouchListener;
 import com.scottlindley.muchtodowithoutado.JavaObjects.ToDoList;
-import com.scottlindley.muchtodowithoutado.JavaObjects.ToDoListCollection;
 import com.scottlindley.muchtodowithoutado.R;
 import com.scottlindley.muchtodowithoutado.ViewHolders.HomeScreenViewHolder;
 
 import java.util.ArrayList;
+
+import static com.scottlindley.muchtodowithoutado.Activities.HomeActivity.mData;
 
 /**
  * Created by Scott Lindley on 10/18/2016.
  */
 
 public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeScreenViewHolder>{
-    private ArrayList<ToDoList> mHomeList = ToDoListCollection.getInstance().getLists();
+    private ArrayList<ToDoList> mHomeList;
     private Context mContext;
     public static final String POSITION_NUMBER = "positionNumber";
 
     public HomeRecyclerViewAdapter(Context context) {
         mContext = context;
+        mHomeList = mData.getLists();
     }
 
     @Override
@@ -55,10 +56,6 @@ public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeScreenView
                 notifyItemRemoved(holder.getAdapterPosition());
                 return true;
             }
-        });
-
-        holder.mRelativeLayout.setOnTouchListener(new OnSwipeTouchListener(mContext){
-
         });
     }
 

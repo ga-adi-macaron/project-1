@@ -17,10 +17,10 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 
 import com.scottlindley.muchtodowithoutado.JavaObjects.ToDo;
-import com.scottlindley.muchtodowithoutado.JavaObjects.ToDoListCollection;
 import com.scottlindley.muchtodowithoutado.R;
 import com.scottlindley.muchtodowithoutado.RecyclerViewAdapters.ListScreenRecyclerViewAdapter;
 
+import static com.scottlindley.muchtodowithoutado.Activities.HomeActivity.mData;
 import static com.scottlindley.muchtodowithoutado.RecyclerViewAdapters.HomeRecyclerViewAdapter.POSITION_NUMBER;
 
 public class ToDoListActivity extends AppCompatActivity {
@@ -29,49 +29,42 @@ public class ToDoListActivity extends AppCompatActivity {
     private TextView mListName;
     private TextView mSplashText;
     private FloatingActionButton mFloatingActionButton;
-    private ToDoListCollection mListData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_to_do_list);
 
-        Intent receivedIntent = getIntent();
-        mPositionNumber = receivedIntent.getIntExtra(POSITION_NUMBER, -1);
 
+        /*
+        Grab the position number from the clicked list through the previous activity's intent.
+        If the list was just created, the default position number is the last index of the list
+         */
+        Intent receivedIntent = getIntent();
+        mPositionNumber = receivedIntent.getIntExtra(
+                POSITION_NUMBER, mPositionNumber = mData.getLists().size() - 1);
+
+        //Get reference variables to the xml views/view groups
         mRecyclerView = (RecyclerView) findViewById(R.id.items_list);
         mListName = (TextView) findViewById(R.id.list_name);
         mFloatingActionButton = (FloatingActionButton) findViewById(R.id.list_floating_action_button);
-        mListData = ToDoListCollection.getInstance();
 
+        //Sync the TextView text with the list's name from the data
+        mListName.setText(mData.getLists().get(mPositionNumber).getName());
+
+        //Set up methods found below
         setFloatingActionButtonClickListener();
-
-        if (mPositionNumber == -1) {
-            /*
-            If we didn't receive a position number, then it must have been a newly created list.
-            Meaning the list we're working with is at the end of the ArrayList.
-             */
-            mPositionNumber = mListData.getLists().size() - 1;
-            mListName.setText(mListData.getLists().get(mListData.getLists().size() - 1).getName());
-        } else {
-            //Else, pull the name of the list from the selected index on the home screen
-            mListName.setText(mListData.getLists().get(mPositionNumber).getName());
-        }
-
-        LinearLayoutManager layoutManager = new LinearLayoutManager(ToDoListActivity.this);
-        mRecyclerView.setLayoutManager(layoutManager);
-
-        if (mPositionNumber == -1) {
-            mRecyclerView.setAdapter(new ListScreenRecyclerViewAdapter(mListData.getLists().size() - 1));
-        } else {
-            mRecyclerView.setAdapter(new ListScreenRecyclerViewAdapter(mPositionNumber));
-        }
-
         addOrRemoveSplashText();
 
-    }
+        //Set up layout manager and recycler view
+        LinearLayoutManager layoutManager = new LinearLayoutManager(ToDoListActivity.this);
+        mRecyclerView.setLayoutManager(layoutManager);
+        mRecyclerView.setAdapter(new ListScreenRecyclerViewAdapter(mPositionNumber));
 
+
+
+    }
+    //When clicked, the floating action button creates an alert dialog
     public void setFloatingActionButtonClickListener() {
         mFloatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,6 +82,7 @@ public class ToDoListActivity extends AppCompatActivity {
 
                 setRadioButtonClickListeners(lowPriority, mediumPriority, highPriority);
 
+
                 dialogBuilder.setPositiveButton("okay", null);
                 dialogBuilder.setNegativeButton("cancel", null);
 
@@ -96,6 +90,7 @@ public class ToDoListActivity extends AppCompatActivity {
                 final AlertDialog dialog = dialogBuilder.create();
                 dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
 
+                //This allows to me dismiss the dialog box manually
                 dialog.setOnShowListener(new DialogInterface.OnShowListener() {
                     @Override
                     public void onShow(DialogInterface dialogInterface) {
@@ -113,17 +108,17 @@ public class ToDoListActivity extends AppCompatActivity {
                                     itemName.setError("Name cannot be blank");
                                 } else {
                                     if (itemDescription.getText().toString().equals("")) {
-                                        mListData.getLists().get(mPositionNumber).getItems().add(
+                                        mData.getLists().get(mPositionNumber).getItems().add(
                                                 new ToDo(itemName.getText().toString(), ""));
                                         mRecyclerView.getAdapter().notifyItemChanged(
-                                                mListData.getLists().get(mPositionNumber).getItems().size() - 1);
+                                                mData.getLists().get(mPositionNumber).getItems().size() - 1);
                                     } else {
-                                        mListData.getLists().get(mPositionNumber).getItems().add(
+                                        mData.getLists().get(mPositionNumber).getItems().add(
                                                 new ToDo(itemName.getText().toString(),
                                                         itemDescription.getText().toString())
                                         );
                                         mRecyclerView.getAdapter().notifyItemChanged(
-                                                mListData.getLists().get(mPositionNumber).getItems().size() - 1);
+                                                mData.getLists().get(mPositionNumber).getItems().size() - 1);
                                     }
                                     int priority;
                                     if (lowPriority.isChecked()) {
@@ -135,8 +130,8 @@ public class ToDoListActivity extends AppCompatActivity {
                                     } else {
                                         priority = 0;
                                     }
-                                    ToDo addedToDo = mListData.getLists().get(mPositionNumber).getItems().get(
-                                            mListData.getLists().get(mPositionNumber).getItems().size() - 1);
+                                    ToDo addedToDo = mData.getLists().get(mPositionNumber).getItems().get(
+                                            mData.getLists().get(mPositionNumber).getItems().size() - 1);
                                     switch (priority) {
                                         case 0:
                                             addedToDo.mPriority = 0;
@@ -193,15 +188,18 @@ public class ToDoListActivity extends AppCompatActivity {
         });
     }
 
+
+    //When returning to the activity, evaluate the need for the splash text
     @Override
     public void onPostResume() {
         addOrRemoveSplashText();
         super.onPostResume();
     }
 
+    //When the list is empty, show splash text. Else, hide it.
     public void addOrRemoveSplashText() {
         mSplashText = (TextView)findViewById(R.id.list_splash);
-        if (mListData.getLists().get(mPositionNumber).getItems().isEmpty()) {
+        if (mData.getLists().get(mPositionNumber).getItems().isEmpty()) {
             mSplashText.setVisibility(View.VISIBLE);
         } else {
             mSplashText.setVisibility(View.INVISIBLE);

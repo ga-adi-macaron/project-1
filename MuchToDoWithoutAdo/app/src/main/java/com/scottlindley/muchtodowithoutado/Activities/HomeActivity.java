@@ -3,6 +3,7 @@ package com.scottlindley.muchtodowithoutado.Activities;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -26,11 +27,12 @@ import com.scottlindley.muchtodowithoutado.RecyclerViewAdapters.HomeRecyclerView
 
 
 public class HomeActivity extends AppCompatActivity {
-    private TextView mWelcomeText;
     private TextView mSplashText;
     private FloatingActionButton mFloatingActionButton;
     private RecyclerView mRecyclerView;
-    public ToDoListCollection mHomeLists;
+    public static ToDoListCollection mData;
+    private SharedPreferences mSavedData;
+    public static final String PREFERENCES = "preferences";
 
 
     @Override
@@ -39,11 +41,13 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         //Make instance of singleton
-        mHomeLists = ToDoListCollection.getInstance();
+        mData = ToDoListCollection.getInstance();
+
+
         mFloatingActionButton = (FloatingActionButton)findViewById(R.id.home_floating_action_button);
 
 
-        initializeWelcomeText();
+        initializeSplashText();
 
         //set XML references
         mRecyclerView = (RecyclerView)findViewById(R.id.home_recycler);
@@ -85,11 +89,11 @@ public class HomeActivity extends AppCompatActivity {
                             Toast.makeText(HomeActivity.this, "List name cannot be blank", Toast.LENGTH_SHORT).show();
                         }else{
                             //Start activity and add a new ToDoList to the data with the entered name
-                            mHomeLists.getLists().add(new ToDoList(newListName.getText().toString()));
-                            mRecyclerView.getAdapter().notifyItemChanged(mHomeLists.getLists().size()-1);
+                            mData.getLists().add(new ToDoList(newListName.getText().toString()));
+                            mRecyclerView.getAdapter().notifyItemChanged(mData.getLists().size()-1);
                             Intent intent = new Intent(HomeActivity.this, ToDoListActivity.class);
 //                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                            Log.d("IN DIALOG", "onClick: "+mHomeLists.getLists().size());
+                            Log.d("IN DIALOG", "onClick: "+ mData.getLists().size());
                             view.getContext().startActivity(intent);
                         }
                     }
@@ -116,11 +120,11 @@ public class HomeActivity extends AppCompatActivity {
                                 }else {
                                     //Start activity and add a new ToDoList to the data with the entered name
                                     dialog.dismiss();
-                                    mHomeLists.getLists().add(new ToDoList(newListName.getText().toString()));
-                                    mRecyclerView.getAdapter().notifyItemChanged(mHomeLists.getLists().size() - 1);
+                                    mData.getLists().add(new ToDoList(newListName.getText().toString()));
+                                    mRecyclerView.getAdapter().notifyItemChanged(mData.getLists().size() - 1);
                                     Intent intent = new Intent(HomeActivity.this, ToDoListActivity.class);
         //                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                    Log.d("IN DIALOG", "onClick: " + mHomeLists.getLists().size());
+                                    Log.d("IN DIALOG", "onClick: " + mData.getLists().size());
                                     view.getContext().startActivity(intent);
                                 }
                             }
@@ -137,10 +141,9 @@ public class HomeActivity extends AppCompatActivity {
 
     }
 
-    public void initializeWelcomeText(){
-        mWelcomeText = (TextView)findViewById(R.id.welcome_text);
+    public void initializeSplashText(){
         mSplashText = (TextView)findViewById(R.id.home_splash);
-        if(mHomeLists.getLists().isEmpty()){
+        if(mData.getLists().isEmpty()){
             mSplashText.setVisibility(View.VISIBLE);
 
             mFloatingActionButton.setBackgroundTintList(ColorStateList.valueOf(Color.rgb(225,253,240)));
@@ -155,9 +158,13 @@ public class HomeActivity extends AppCompatActivity {
         }
     }
 
+    //This determines whether or not the splash text is necessary
     @Override
     protected void onPostResume() {
-        initializeWelcomeText();
+        initializeSplashText();
         super.onPostResume();
     }
+
+
+
 }

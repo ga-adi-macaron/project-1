@@ -8,7 +8,9 @@ import java.util.ArrayList;
  */
 public class ToDoListCollection implements Serializable{
     private static ToDoListCollection ourInstance;
-    private ArrayList<ToDoList> lists;
+    private ArrayList<ToDoList> mLists;
+
+
 
     public static ToDoListCollection getInstance() {
         if(ourInstance==null){
@@ -18,10 +20,13 @@ public class ToDoListCollection implements Serializable{
     }
 
     private ToDoListCollection() {
-        lists = new ArrayList<>();
+        mLists = new ArrayList<>();
     }
 
+
     public ArrayList<ToDoList> getLists(){
-        return lists;
+        return mLists;
     }
+
+
 }
