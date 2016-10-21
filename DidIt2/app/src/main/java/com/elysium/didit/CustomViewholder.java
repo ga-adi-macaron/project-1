@@ -18,7 +18,7 @@ public class CustomViewholder extends RecyclerView.ViewHolder {
     public CheckBox mCheckbox, mCheckbox2;
     public RelativeLayout mMy_Lists;
 
-    public EditText mentry;
+    public EditText mEntry;
 
     public CustomViewholder(View itemView) {
         super(itemView);
@@ -31,7 +31,7 @@ public class CustomViewholder extends RecyclerView.ViewHolder {
         mCheckbox = (CheckBox) itemView.findViewById(R.id.Checkbox);
         mCheckbox2 = (CheckBox) itemView.findViewById(R.id.Checkbox1);
 
-        //mentry = (EditText) itemView.findViewById(R.id.entry);
+        mEntry = (EditText) itemView.findViewById(R.id.entry_text);
 
     }
 }
