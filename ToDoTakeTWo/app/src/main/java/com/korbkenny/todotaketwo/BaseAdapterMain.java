@@ -16,11 +16,12 @@ import java.util.ArrayList;
 public class BaseAdapterMain extends BaseAdapter
 {
     BigOldListOfLists bigOldListOfLists;
-    ArrayList<ToDoList> toDoListArray = bigOldListOfLists.getListOfLists();
+    ArrayList<ToDoList> toDoListArray;
     LayoutInflater inflater;
     Context context;
 
     public BaseAdapterMain (Context context, ArrayList<ToDoList> toDoListArray){
+        //toDoListArray = bigOldListOfLists.getListOfLists();
         this.toDoListArray = toDoListArray;
         this.context = context;
         inflater = LayoutInflater.from(this.context);

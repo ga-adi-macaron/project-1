@@ -89,7 +89,7 @@ public class ListActivity extends AppCompatActivity{
                                     public void onClick(DialogInterface dialog, int id) {
                                         if(userInputTitle.getText().toString().trim().equals("")
                                                 || userInputDescript.getText().toString().trim().equals("")){
-                                            Toast.makeText(context, "MUST NAME", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(context, "Shoulda entered text...", Toast.LENGTH_SHORT).show();
                                         }
                                         else{
                                             mToDoItemLists.add(new ToDoItem(userInputTitle.getText().toString().toUpperCase(),

@@ -20,16 +20,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity{
     private ListView mListView;
     private Button mAddNewList;
     final Context context = this;
-    //public BaseAdapter mBaseAdapter;
     public ArrayAdapter<ToDoList> mArrayAdapter;
     public BigOldListOfLists bigOldListOfLists;
-    //public static final String SENDINGCODE = "Cool";
+    //~~~~~Base Adapter
+    public BaseAdapterMain mBaseAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,38 +42,20 @@ public class MainActivity extends AppCompatActivity{
         bigOldListOfLists = BigOldListOfLists.getInstance();
         mListView = (ListView)findViewById(R.id.LOLView);
         mAddNewList = (Button)findViewById(R.id.addNewList);
-//
-//        bigOldListOfLists.getListOfLists().add(new ToDoList("Hello there"));
-//        bigOldListOfLists.getListOfLists().add(new ToDoList("HIIIIii"));
+        mBaseAdapter = new BaseAdapterMain(context, bigOldListOfLists.getListOfLists());
+
+        mListView.setAdapter(mBaseAdapter);
 
 
-//        mBaseAdapter = new BaseAdapter() {
-//            @Override
-//            public int getCount() {
-//                return (bigOldListOfLists.getListOfLists().size() == 0) ? 0 : bigOldListOfLists.getListOfLists().size();
-//            }
-//
-//            @Override
-//            public Object getItem(int position) {
-//                return bigOldListOfLists.getListOfLists().get(position);
-//            }
-//
-//            @Override
-//            public long getItemId(int position) {
-//                return 0;
-//            }
-//
-//            @Override
-//            public View getView(int position, View convertView, ViewGroup parent) {
-//                if(convertView==null){
-//                    convertView = getLayoutInflater().inflate(R.layout.list_lists_item_main, parent, false);
-//                }
-//                ((TextView) convertView).setText(getItem(position));
-//
-//                return convertView;
-//
-//            }
-//        };
+        //~~~~~Base Adapter
+        //mListView.setAdapter();
+
+
+        //class ArrayAdapter
+
+
+
+
 
 
 
@@ -95,8 +78,13 @@ public class MainActivity extends AppCompatActivity{
                         .setPositiveButton("Add",
                                 new DialogInterface.OnClickListener(){
                                     public void onClick(DialogInterface dialog,int id){
+
+                                        if(userInput.getText().toString().trim().equals("")){
+                                            Toast.makeText(context, "Shoulda entered text...", Toast.LENGTH_SHORT).show();
+                                        }else{
                                         bigOldListOfLists.getListOfLists().add(new ToDoList(userInput.getText().toString()));
-                                        mArrayAdapter.notifyDataSetChanged();
+                                        mBaseAdapter.notifyDataSetChanged();
+                                        }
                                     }
                                 })
                         .setNegativeButton("Nvm",
@@ -139,7 +127,7 @@ public class MainActivity extends AppCompatActivity{
                                 new DialogInterface.OnClickListener(){
                                     public void onClick(DialogInterface dialog, int id) {
                                         bigOldListOfLists.getListOfLists().remove(position);
-                                        mArrayAdapter.notifyDataSetChanged();
+                                        mBaseAdapter.notifyDataSetChanged();
                                     }
                                 })
                             .setNegativeButton("Nah",
@@ -155,12 +143,59 @@ public class MainActivity extends AppCompatActivity{
                 }
             });
 
-            //if (!(bigOldListOfLists.getListOfLists().equals(null))) {
-               // mListView.setAdapter(new BaseAdapterMain(context, bigOldListOfLists.getListOfLists()));
-           // }
         }
-        mArrayAdapter = new ArrayAdapter<ToDoList>(context,android.R.layout.simple_list_item_1,bigOldListOfLists.getListOfLists());
-        mListView.setAdapter(mArrayAdapter);
+      //ARRAY ADAPTER
+   //     mArrayAdapter = new ArrayAdapter<ToDoList>(context,android.R.layout.simple_list_item_1,bigOldListOfLists.getListOfLists());
+     //   mListView.setAdapter(mArrayAdapter);
 
     }
 }
+
+
+/**
+ *
+ *
+ *      ~~~~~~~~~~~~~~  Below is random snippets of code I scrapped (But may want in the future? [prob not])
+ *
+ */
+
+
+
+//if (!(bigOldListOfLists.getListOfLists().equals(null))) {
+// mListView.setAdapter(new BaseAdapterMain(context, bigOldListOfLists.getListOfLists()));
+// }
+
+//        bigOldListOfLists.getListOfLists().add(new ToDoList("Hello there"));
+//        bigOldListOfLists.getListOfLists().add(new ToDoList("HIIIIii"));
+
+
+//        mBaseAdapter = new BaseAdapter() {
+//            @Override
+//            public int getCount() {
+//                return (bigOldListOfLists.getListOfLists().size() == 0) ? 0 : bigOldListOfLists.getListOfLists().size();
+//            }
+//
+//            @Override
+//            public Object getItem(int position) {
+//                return bigOldListOfLists.getListOfLists().get(position);
+//            }
+//
+//            @Override
+//            public long getItemId(int position) {
+//                return 0;
+//            }
+//
+//            @Override
+//            public View getView(int position, View convertView, ViewGroup parent) {
+//                if(convertView==null){
+//                    convertView = getLayoutInflater().inflate(R.layout.list_lists_item_main, parent, false);
+//                }
+//                ((TextView) convertView).setText(getItem(position));
+//
+//                return convertView;
+//
+//            }
+//        };
+
+
+
