@@ -1,9 +1,8 @@
-package com.davescar.project1;
+package com.davescar.project1.list_chores;
 
-import android.widget.ListView;
+import com.davescar.project1.chore.Chore;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by ds on 10/19/16.
@@ -11,19 +10,19 @@ import java.util.List;
 
 public class ChoreList {
 
-    private ArrayList<Chore> mToDoList;
+    private ArrayList<Chore> mChoreList;
     private String mNameOfList;
 
 
     public ChoreList(String nameOfList) {
-        mToDoList = new ArrayList<>();
+        mChoreList = new ArrayList<>();
         mNameOfList = nameOfList;
 
 
     }
 
-    public ArrayList<Chore> getToDoList() {
-        return mToDoList;
+    public ArrayList<Chore> getChoreList() {
+        return mChoreList;
     }
 
     public String getNameOfList() {
@@ -36,9 +35,7 @@ public class ChoreList {
     }
 
     public void makeNewChore(Chore chore) {
-        mToDoList.add(chore);
+        mChoreList.add(chore);
+    }
+}
 
-   /* public void makeNewList(ChoreList newChoreList) {
-        mToDoList.add(newChoreList);
-    }*/
-}}

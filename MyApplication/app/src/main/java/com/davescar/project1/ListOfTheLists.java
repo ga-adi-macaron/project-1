@@ -1,5 +1,7 @@
 package com.davescar.project1;
 
+import com.davescar.project1.list_chores.ChoreList;
+
 import java.util.ArrayList;
 
 /**

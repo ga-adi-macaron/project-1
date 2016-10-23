@@ -5,11 +5,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
-import java.util.ArrayList;
+import com.davescar.project1.list_chores.ChoreList;
+import com.davescar.project1.list_chores.ListsAdapter;
+
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -42,11 +43,19 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                String userInput = mAddList.getText().toString();
-                ChoreList choreList = new ChoreList(userInput);
-                ListOfTheLists.getInstance().makeNewList(choreList);
+                if (mAddList.getText().toString().isEmpty()) {
+                    mAddList.setError("Please enter some text");
 
-                listsAdapter.notifyDataSetChanged();
+                } else {
+
+                    String userInput = mAddList.getText().toString();
+                    ChoreList choreList = new ChoreList(userInput);
+                    ListOfTheLists.getInstance().makeNewList(choreList);
+
+                    listsAdapter.notifyDataSetChanged();
+
+                    mAddList.setText("");
+                }
 
             }
         });

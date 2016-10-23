@@ -1,9 +1,11 @@
-package com.davescar.project1;
+package com.davescar.project1.chore;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.TextView;
+
+import com.davescar.project1.R;
 
 /**
  * Created by ds on 10/20/16.

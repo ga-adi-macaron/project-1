@@ -1,4 +1,4 @@
-package com.davescar.project1;
+package com.davescar.project1.chore;
 
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
