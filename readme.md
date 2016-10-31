@@ -1,83 +1,29 @@
-# ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) Project #1: To-Do List
+10-18:
 
-#### Overview
+Initial concept thoughts - create a lightweight, intuitive to-do list app with a splsh screen, a ListVIew of recently edited notes (actionable), a sidebar settings menu (this is where access to the full list of notes will be), a contrast colored FAB with both short and long press actions, checkboxes to mark items as "done" and lists as "accomplished" and marked for deletion in 5 days. 
 
-It's time to create your very first Android project - a to-do list app. This might seem intimidating at first, but you have the ability to break down what you see on the screen into easily identifiable parts. Learning to both design an app and implement your designs are crucial skills to being a successful Android developer.
+Item Features (by section):
 
-**You will be working individually for this project**. Think through your design carefully before you implement it in Android Studio. Test both the layout and functionality of each screen as you create them. Don't wait until the end!
+       [B]To-Do List[/B] - List created with a recyclerView, LinearLayout
+                
+                FAB button (or regular button) to 'Add' and 'Remove' lists and listItems (one button for each)
+                    ** these buttons both require onClickListeners in order to be actionable **
+                        ## each onClickListener needs to be called in MAIN (I believe) ##
+                        
+                        ^^ repeat these steps for the main List Creation method (ie. FAB button w/ onClickListeners on each) ^^
+                        
+                [B]Singleton[/B] to store lists and listItems in memory, so they'll persist across sessions
+                
+                [B]LongPress[/B] action to activate the 'edit' (and maybe 'remove') option for each list and listItem
+                
+         
+        [B] // Options that may be outside the scope of the project and time allowance (or made redundant in other instructions)[/B]
+        
+        Recently Edited Notes - the (1-5) most recent notes made. Actionable to edit or mark for deletion.
+                    Sub section for notes that are due to be deleted.
+        
+        Sidebar Menu - Settings for push notification reminders, access to 'My Lists'(?), (NOT DOING THIS MOST LIKELY)
+        
+The app builds in a very basic way, but I can't figure out how to get my second activity to render on the screen....
 
----
-
-#### Requirements
-
-Your app must:
-
-- **Display a collection of to-do lists**
-- **Display items on each to-do list, including descriptions**
-- Allow the user to **create a new to-do list**
-- Allow the user to **Add items** to each to-do list
-- Allow the user to **remove items from a to-do list**
-- Allow the user to **remove an entire to-do list**
-- Use two custom Java objects to contain your data for each `ToDoList`, and the `ToDoItem`s in each `ToDoList`
-- Show an error message if invalid input is given (e.g. blank input)
-- Persist data (your `ToDoList`s) while the app is open using a **singleton**
-- Use either `ListView` or `RecyclerView` to show your `ToDoList`s and `ToDoItem`s. We recommend `RecyclerView`, but will accept `ListView` for this project.
-- Display correctly in both landscape and portrait orientations
-
-**Bonus:**
-
-- Allow the user to check off completed items
-- Allow the user to edit previously added items
-- Persist data when the app closes and is re-opened
-
----
-
-#### Code of Conduct
-
-As always, your app must adhere to General Assembly's [student code of conduct guidelines](../../../resources/guidelines/code-of-conduct.md).
-
-If you have questions about whether or not your work adheres to these guidelines, please speak with a member of your instructional team.
-
----
-
-#### Necessary Deliverables
-
-- A **git repository hosted on GitHub**, with frequent commits dating back to the **very beginning** of the project. Commit early, commit often.
-- **A ``readme.md`` file** describing what the app does, and any bugs that may exist
-- At least one screenshot of your home screen in the `readme.md`
-- Pictures of your prototypes in the git repository
-
----
-
-#### Suggested Ways to Get Started
-
-- Complete as much of the layout XML as possible before starting to write your logic
-- Use the Android API documentation - it is very thorough and provides useful code samples
-- Don’t hesitate to write throwaway code to solve short term problems
-- Write pseudocode before you write actual code (remember to think through the logic first!)
-
----
-
-### Useful Resources
-
-- [Android API Reference](http://developer.android.com/reference/packages.html)
-- [Android API Guides](http://developer.android.com/guide/index.html)
-
----
-
-#### Example Deliverable
-
-Below you can find an example of what the instructors' final product looks like. **Be creative with your own designs!**
-
-<p align="center">
-  <img src="screenshots/screenshot1.png" width="250">
-  <img src="screenshots/screenshot2.png" width="250">
-  <img src="screenshots/screenshot3.png" width="250">
-  <img src="screenshots/screenshot4.png" width="250">
-</p>
-
----
-
-## Licensing
-1. All content is licensed under a CC­BY­NC­SA 4.0 license.
-2. All software code is licensed under GNU GPLv3. For commercial use or alternative licensing, please contact [legal@ga.co](mailto:legal@ga.co).
+!!!! The App is now broken beyond when trying to progress beyond the first screen. The only things that are functional are the EditText field, and the Checkbox at the moment -_- !!!!
