@@ -25,17 +25,14 @@ public class ListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_list);
 
 
-                    //view of to-do items
-                    mListRView = (RecyclerView) findViewById(R.id.item_list);
+                    mListRView = (RecyclerView) findViewById(R.id.ListRview);
 
                     LinearLayoutManager layoutManager = new LinearLayoutManager(mListRView.getContext());
                     mListRView.setLayoutManager(layoutManager);
 
-                    //edit text for title and description
                     mEditTitle = (EditText) findViewById(R.id.list_name);
                     mEditDescription = (EditText) findViewById(R.id.description);
 
-                    //save - add new to-do item, clear - clear current edit text entries
                     mSave = (Button) findViewById(R.id.save_button);
                     mClear = (Button) findViewById(R.id.clear_button);
 
@@ -54,9 +51,8 @@ public class ListActivity extends AppCompatActivity {
                     mSave.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            //Add new item to the list, clear EditTexts
                             if (mEditTitle.getText().length() < 1) {
-                                mEditTitle.setError("Title Cannot Be Empty");
+                                mEditTitle.setError("Title Can't Be Empty");
                             } else {
                                 mToDoList.add(new ToDoItems(mEditTitle.getText().toString(),
                                         mEditDescription.getText().toString()));
@@ -70,7 +66,6 @@ public class ListActivity extends AppCompatActivity {
                     mClear.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            //Clear EditTexts
                             mEditTitle.setText("");
                             mEditDescription.setText("");
                         }
