@@ -15,8 +15,7 @@
         android:layout_width="260dp"
         android:layout_height="wrap_content"
         android:text="To-Do List Title"
-        android:textSize="24sp"
-        android:textStyle="bold"
+        android:textSize="20dp"
         android:textColor="#000000"/>
 
     <android.support.v7.widget.AppCompatButton
@@ -24,9 +23,9 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_alignParentRight="true"
-        android:background="@android:drawable/ic_menu_edit"
+        android:background="?android:attr/floatingToolbarOpenDrawable"
         android:layout_marginBottom="6dp"
-        android:backgroundTint="#f57f17" />
+        android:backgroundTint="#797474" />
 
     <Button
         android:id="@+id/delete_button"
@@ -34,6 +33,6 @@
         android:layout_height="40dp"
         android:layout_alignParentRight="true"
         android:layout_below="@id/edit_button"
-        android:background="@android:drawable/ic_delete" />
+        android:background="@android:drawable/ic_notification_clear_all" />
 
 </RelativeLayout>

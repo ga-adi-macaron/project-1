@@ -12,9 +12,10 @@ import java.util.List;
  */
 
 public class ListAdapter extends RecyclerView.Adapter<ItemViewHolder> {
+
     List<ToDoItems> mToDoItems;
 
-    public ListAdapter(List<ToDoItems> toDoList) {
+   public ListAdapter(List<ToDoItems> toDoList) {
         mToDoItems = toDoList;
     }
 
