@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
                 LayoutInflater inflater = MainActivity.this.getLayoutInflater();
                 createNewList.setView(inflater.inflate(R.layout.alert_dialog_list_title, null))
                         .setPositiveButton("create", new DialogInterface.OnClickListener() {
+
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 Dialog newDialog = (Dialog)dialog;
@@ -56,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        toDoListRecycler = (RecyclerView) findViewById(R.id.list_of_lists);
+        toDoListRecycler = (RecyclerView) findViewById(R.id.recyclerView);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         toDoListRecycler.setLayoutManager(layoutManager);

@@ -16,7 +16,7 @@ public class ListActivity extends AppCompatActivity {
 
     private EditText mEditTitle, mEditDescription;
     private Button mSave, mClear;
-    private RecyclerView mListedLists;
+    private RecyclerView mListRView;
     private List<ToDoItems> mToDoList;
 
     @Override
@@ -26,10 +26,10 @@ public class ListActivity extends AppCompatActivity {
 
 
                     //view of to-do items
-                    mListedLists = (RecyclerView) findViewById(R.id.item_list);
+                    mListRView = (RecyclerView) findViewById(R.id.item_list);
 
-                    LinearLayoutManager layoutManager = new LinearLayoutManager(mListedLists.getContext());
-                    mListedLists.setLayoutManager(layoutManager);
+                    LinearLayoutManager layoutManager = new LinearLayoutManager(mListRView.getContext());
+                    mListRView.setLayoutManager(layoutManager);
 
                     //edit text for title and description
                     mEditTitle = (EditText) findViewById(R.id.list_name);
@@ -60,7 +60,7 @@ public class ListActivity extends AppCompatActivity {
                             } else {
                                 mToDoList.add(new ToDoItems(mEditTitle.getText().toString(),
                                         mEditDescription.getText().toString()));
-                                mListedLists.getAdapter().notifyItemInserted(mToDoList.size() - 1);
+                                mListRView.getAdapter().notifyItemInserted(mToDoList.size() - 1);
                             }
                             mEditTitle.setText("");
                             mEditDescription.setText("");
@@ -76,6 +76,6 @@ public class ListActivity extends AppCompatActivity {
                         }
                     });
 
-                    mListedLists.setAdapter(new ListAdapter(mToDoList));
+                    mListRView.setAdapter(new ListAdapter(mToDoList));
                 }
             }
