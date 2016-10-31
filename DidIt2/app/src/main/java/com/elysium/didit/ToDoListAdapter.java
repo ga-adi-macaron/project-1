@@ -51,7 +51,7 @@ public class ToDoListAdapter extends RecyclerView.Adapter<ToDoListViewHolder> {
                         notifyItemRemoved(holder.getAdapterPosition());
                         break;
                     default:
-                        Toast.makeText(v.getContext(), "You missed the button...", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(v.getContext(), "Please press a button", Toast.LENGTH_SHORT).show();
                 }
             }
         };
