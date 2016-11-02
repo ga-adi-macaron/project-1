@@ -1,79 +1,38 @@
-# ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) Project #1: To-Do List
+#/Users/colinbradley/Projects/Project1/project-1/readme.md ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) Project #1: To-Do List
 
-#### Overview
 
-It's time to create your very first Android project - a to-do list app. This might seem intimidating at first, but you have the ability to break down what you see on the screen into easily identifiable parts. Learning to both design an app and implement your designs are crucial skills to being a successful Android developer.
+#### Description
+- app opens into the view of lists(blank when fresh start)
+- “Add List” button on the bottom opens up an AlertDialog to input a new list
+- the AlertDialog holds a single edit text with a cancel button and an add button
+- list name cannot be blank, trying to add a blank list will return an error toast
+- once the add button is clicked and it has checked that it isn’t blank it adds a new  list to the singleton (consisting of a list of list names and a hash map to organize the items and their description) and then notifies the data change to the adapter
+- the view of lists is now updated to show the new list
+- the new list on the screen has 2 parts (textview and a new button to remove)
+- the remove button removes the list it is associated with and notifies the adapter
+- clicking on the rest of the row starts a new intent that opens the items view and assigns the list name to the top of the item view
+- 2 buttons now appear on the bottom of the of the screen (a “back” button and an “add item” button)
+- the back button will simply call finish() and revert back to the view of lists
+- the add item button will open a new AlertDialog
+- this dialog has 2 edit texts and the same buttons as the add list dialog
+- the item name field cannot be empty but the description is optional
+- once the add button is clicked it adds the item and its description into the singleton and notifies the change to the adapter once again
+- the new item now appears on the screen and it is a similar layout as the list but with 2 text views
+- remove button works the same as the list one and removes the list associated and notifies the adapter
+- the textviews don’t have any function or intent
+- the info is held on the singleton for the entire time the app is open but unfortunately it cannot save info for separate openings (yet) 
 
-**You will be working individually for this project**. Think through your design carefully before you implement it in Android Studio. Test both the layout and functionality of each screen as you create them. Don't wait until the end!
-
----
-
-#### Requirements
-
-Your app must:
-
-- **Display a collection of to-do lists**
-- **Display items on each to-do list, including descriptions**
-- Allow the user to **create a new to-do list**
-- Allow the user to **Add items** to each to-do list
-- Allow the user to **remove items from a to-do list**
-- Allow the user to **remove an entire to-do list**
-- Use two custom Java objects to contain your data for each `ToDoList`, and the `ToDoItem`s in each `ToDoList`
-- Show an error message if invalid input is given (e.g. blank input)
-- Persist data (your `ToDoList`s) while the app is open using a **singleton**
-- Use either `ListView` or `RecyclerView` to show your `ToDoList`s and `ToDoItem`s. We recommend `RecyclerView`, but will accept `ListView` for this project.
-- Display correctly in both landscape and portrait orientations
-
-**Bonus:**
-
-- Allow the user to check off completed items
-- Allow the user to edit previously added items
-- Persist data when the app closes and is re-opened
-
----
-
-#### Code of Conduct
-
-As always, your app must adhere to General Assembly's [student code of conduct guidelines](../../../resources/guidelines/code-of-conduct.md).
-
-If you have questions about whether or not your work adheres to these guidelines, please speak with a member of your instructional team.
-
----
-
-#### Necessary Deliverables
-
-- A **git repository hosted on GitHub**, with frequent commits dating back to the **very beginning** of the project. Commit early, commit often.
-- **A ``readme.md`` file** describing what the app does, and any bugs that may exist
-- At least one screenshot of your home screen in the `readme.md`
-- Pictures of your prototypes in the git repository
-
----
-
-#### Suggested Ways to Get Started
-
-- Complete as much of the layout XML as possible before starting to write your logic
-- Use the Android API documentation - it is very thorough and provides useful code samples
-- Don’t hesitate to write throwaway code to solve short term problems
-- Write pseudocode before you write actual code (remember to think through the logic first!)
-
----
-
-### Useful Resources
-
-- [Android API Reference](http://developer.android.com/reference/packages.html)
-- [Android API Guides](http://developer.android.com/guide/index.html)
-
----
-
-#### Example Deliverable
-
-Below you can find an example of what the instructors' final product looks like. **Be creative with your own designs!**
+#### Screenshots
 
 <p align="center">
-  <img src="screenshots/screenshot1.png" width="250">
-  <img src="screenshots/screenshot2.png" width="250">
-  <img src="screenshots/screenshot3.png" width="250">
-  <img src="screenshots/screenshot4.png" width="250">
+  <img src="screenshots/FinalHomePage.png” width="250">
+  <img src="screenshots/FinalListPopup.png" width="250">
+  <img src="screenshots/FinalListOfList.png" width="250">
+  <img src="screenshots/FinalListRemove.png" width="250">
+  <img src="screenshots/FinalBlankList.png" width="250">
+  <img src="screenshots/FinalItemPopup.png" width="250">
+  <img src="screenshots/FinalListOfItems.png" width="250">
+  <img src="screenshots/FinalItemRemove.png" width="250">
 </p>
 
 ---
