@@ -1,83 +1,69 @@
-# ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) Project #1: To-Do List
+#Welcome to Project 1 - Macaron TodoList
 
-#### Overview
-
-It's time to create your very first Android project - a to-do list app. This might seem intimidating at first, but you have the ability to break down what you see on the screen into easily identifiable parts. Learning to both design an app and implement your designs are crucial skills to being a successful Android developer.
-
-**You will be working individually for this project**. Think through your design carefully before you implement it in Android Studio. Test both the layout and functionality of each screen as you create them. Don't wait until the end!
-
----
-
-#### Requirements
-
-Your app must:
-
-- **Display a collection of to-do lists**
-- **Display items on each to-do list, including descriptions**
-- Allow the user to **create a new to-do list**
-- Allow the user to **Add items** to each to-do list
-- Allow the user to **remove items from a to-do list**
-- Allow the user to **remove an entire to-do list**
-- Use two custom Java objects to contain your data for each `ToDoList`, and the `ToDoItem`s in each `ToDoList`
-- Show an error message if invalid input is given (e.g. blank input)
-- Persist data (your `ToDoList`s) while the app is open using a **singleton**
-- Use either `ListView` or `RecyclerView` to show your `ToDoList`s and `ToDoItem`s. We recommend `RecyclerView`, but will accept `ListView` for this project.
-- Display correctly in both landscape and portrait orientations
-
-**Bonus:**
-
-- Allow the user to check off completed items
-- Allow the user to edit previously added items
-- Persist data when the app closes and is re-opened
-
----
-
-#### Code of Conduct
-
-As always, your app must adhere to General Assembly's [student code of conduct guidelines](../../../resources/guidelines/code-of-conduct.md).
-
-If you have questions about whether or not your work adheres to these guidelines, please speak with a member of your instructional team.
-
----
-
-#### Necessary Deliverables
-
-- A **git repository hosted on GitHub**, with frequent commits dating back to the **very beginning** of the project. Commit early, commit often.
-- **A ``readme.md`` file** describing what the app does, and any bugs that may exist
-- At least one screenshot of your home screen in the `readme.md`
-- Pictures of your prototypes in the git repository
-
----
-
-#### Suggested Ways to Get Started
-
-- Complete as much of the layout XML as possible before starting to write your logic
-- Use the Android API documentation - it is very thorough and provides useful code samples
-- Don’t hesitate to write throwaway code to solve short term problems
-- Write pseudocode before you write actual code (remember to think through the logic first!)
-
----
-
-### Useful Resources
-
-- [Android API Reference](http://developer.android.com/reference/packages.html)
-- [Android API Guides](http://developer.android.com/guide/index.html)
-
----
-
-#### Example Deliverable
-
-Below you can find an example of what the instructors' final product looks like. **Be creative with your own designs!**
-
+Hello and welcome to my Macaron TodoList. This TodoList was designed with simplicity in use and have clean interface.
+You can download my app here -> [Macaron TodoList] (https://play.google.com/store/apps/details?id=com.joelimyx.todolist&hl=en)
 <p align="center">
-  <img src="screenshots/screenshot1.png" width="250">
-  <img src="screenshots/screenshot2.png" width="250">
-  <img src="screenshots/screenshot3.png" width="250">
-  <img src="screenshots/screenshot4.png" width="250">
+<img src= "screenshots/Screenshot_20161021-115924.png" width=250>
+<img src = "screenshots/Screenshot_20161020-222315.png" width=250>
 </p>
 
----
 
-## Licensing
-1. All content is licensed under a CC­BY­NC­SA 4.0 license.
-2. All software code is licensed under GNU GPLv3. For commercial use or alternative licensing, please contact [legal@ga.co](mailto:legal@ga.co).
+##Prototype 
+Before I started anything, I drew some prototype as to how my Todo List would work before I started coding. Initially I was thinking of putting all the button on one side. But after a few testing with different layout, I ultimately  did change up some design aspect when I was doing the actual testing. 
+
+<p align="center">
+  <img src="prototype/IMG_20161019_223505.jpg" width=250>
+  <img src="prototype/IMG_20161019_223527.jpg" width=250>
+  <img src="prototype/IMG_20161019_223601.jpg" width=250>
+  <img src="prototype/IMG_20161019_223618.jpg" width=250>
+  <img src="prototype/IMG_20161019_223631.jpg" width=250>
+</p>
+
+##Functions
+###Add List
+You can **create** new List and add item to them individually!
+<p align="center">
+<img src="screenshots/Screenshot_20161020-223120.png" width=250>
+<img src="screenshots/Screenshot_20161021-123349.png" width=250>
+<img src="screenshots/Screenshot_20161020-222320.png" width=250>
+</p>
+
+###Remove
+If you don't want to deal with your ToDo List, you can just **remove** it!
+<p align="center">
+<img src="screenshots/Screenshot_20161021-120008.png" width 250>
+</p>
+
+###Restore
+Oops, accidentaly delete a list or item? You can **restore** it! If you can press the button in time.
+<p align="center">
+<img src="screenshots/Screenshot_20161021-120018.png" width=250>
+</p>
+
+###Rename 
+Wrote the wrong title or missed some detial in your item? You can **Edit** them!
+<p align="center">
+<img src="screenshots/Screenshot_20161020-222325.png" width=250>
+</p>
+
+###Title or Name won't be empty
+Want to make the list name or title empty? WELP sorry, I made it to not add on if **EMPTY**.
+<p align="center">
+<img src="Screenshot_20161021-122624.png" width=250>
+</p>
+
+###Mark Done
+Finally got your item or got it done? You can **mark it as done** by just pressing on the item.
+<p align="center">
+<img src="Screenshot_20161021-123108.png" width=250>
+</p>
+
+##Not included / statisfied
+###Data persistence 
+I couldn't get the app to store data. I've tried shared preference, but the object just would not store the data.
+
+###Detail and title alignment 
+The title looks offset when the detail text is empty
+
+###Button alignment 
+This is still a work in progress. Things aren't exactly in position or seems offset.
