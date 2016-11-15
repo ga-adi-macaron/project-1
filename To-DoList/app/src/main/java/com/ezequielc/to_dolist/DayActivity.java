@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class DayActivity extends AppCompatActivity {
     private EditText mEditText;
@@ -27,7 +28,7 @@ public class DayActivity extends AppCompatActivity {
                 LinearLayoutManager.VERTICAL, false);
         mRecyclerView.setLayoutManager(linearLayoutManager);
 
-        mDayAdapter = new DayAdapter(Singleton.getInstance().getDays());
+        mDayAdapter = new DayAdapter(DayActivity.this);
         mRecyclerView.setAdapter(mDayAdapter);
 
         mAddButton.setOnClickListener(new View.OnClickListener() {

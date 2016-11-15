@@ -1,8 +1,11 @@
 package com.ezequielc.to_dolist;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -12,9 +15,11 @@ import java.util.ArrayList;
 
 public class TasksAdapter extends RecyclerView.Adapter<TasksViewHolder> {
     private ArrayList<Tasks> mTasksArrayList;
+    private Context mContext;
 
-    public TasksAdapter(ArrayList<Tasks> tasksArrayList) {
-        mTasksArrayList = tasksArrayList;
+    public TasksAdapter(Context context, ArrayList<Tasks> tasks) {
+        mContext = context;
+        mTasksArrayList = tasks;
     }
 
     @Override
@@ -26,11 +31,19 @@ public class TasksAdapter extends RecyclerView.Adapter<TasksViewHolder> {
     @Override
     public void onBindViewHolder(TasksViewHolder holder, int position) {
 
-        Tasks positionOfTasks = mTasksArrayList.get(position);
+        final Tasks positionOfTasks = mTasksArrayList.get(position);
 
         holder.mTasks.setText(mTasksArrayList.get(position).getTasks());
         holder.mDescription.setText(mTasksArrayList.get(position).getDescription());
-        //holder.mRemoveButton.setOnClickListener();
+        holder.mRemoveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mTasksArrayList.remove(positionOfTasks);
+                Toast.makeText(mContext, positionOfTasks.getTasks()+" Removed!",
+                        Toast.LENGTH_SHORT).show();
+                notifyDataSetChanged();
+            }
+        });
     }
 
     @Override

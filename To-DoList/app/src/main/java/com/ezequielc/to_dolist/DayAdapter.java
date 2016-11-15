@@ -1,5 +1,7 @@
 package com.ezequielc.to_dolist;
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,9 +16,11 @@ import java.util.ArrayList;
 
 public class DayAdapter extends RecyclerView.Adapter<DayViewHolder> {
     private ArrayList<Day> mDayArrayList;
+    private Context mContext;
 
-    public DayAdapter(ArrayList<Day> dayList) {
-        mDayArrayList = dayList;
+    public DayAdapter(Context context) {
+        mContext = context;
+        mDayArrayList = Singleton.getInstance().getDays();
     }
 
     @Override
@@ -26,7 +30,7 @@ public class DayAdapter extends RecyclerView.Adapter<DayViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(DayViewHolder holder, int position) {
+    public void onBindViewHolder(final DayViewHolder holder, int position) {
 
         final Day positionOfDay = mDayArrayList.get(position);
 
@@ -38,6 +42,15 @@ public class DayAdapter extends RecyclerView.Adapter<DayViewHolder> {
                 Toast.makeText(view.getContext(), positionOfDay.getDay()+" Removed",
                         Toast.LENGTH_SHORT).show();
                 notifyDataSetChanged();
+            }
+        });
+
+        holder.mDayList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), TasksActivity.class);
+                intent.putExtra("selectedDay", holder.getAdapterPosition());
+                view.getContext().startActivity(intent);
             }
         });
     }
