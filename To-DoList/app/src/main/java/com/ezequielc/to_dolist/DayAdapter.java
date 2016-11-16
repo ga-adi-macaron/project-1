@@ -39,7 +39,7 @@ public class DayAdapter extends RecyclerView.Adapter<DayViewHolder> {
             @Override
             public void onClick(View view) {
                 Singleton.getInstance().removeDay(positionOfDay);
-                Toast.makeText(view.getContext(), positionOfDay.getDay()+" Removed",
+                Toast.makeText(view.getContext(), positionOfDay.getDay()+" Removed!",
                         Toast.LENGTH_SHORT).show();
                 notifyDataSetChanged();
             }

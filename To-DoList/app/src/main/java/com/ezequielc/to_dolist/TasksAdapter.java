@@ -39,7 +39,7 @@ public class TasksAdapter extends RecyclerView.Adapter<TasksViewHolder> {
             @Override
             public void onClick(View view) {
                 mTasksArrayList.remove(positionOfTasks);
-                Toast.makeText(mContext, positionOfTasks.getTasks()+" Removed!",
+                Toast.makeText(mContext, "Task: "+positionOfTasks.getTasks()+" Removed!",
                         Toast.LENGTH_SHORT).show();
                 notifyDataSetChanged();
             }

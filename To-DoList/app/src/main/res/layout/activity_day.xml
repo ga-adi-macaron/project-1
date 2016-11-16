@@ -15,7 +15,8 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Days of the Week" />
+        android:text="Days of the Week"
+        android:textSize="24sp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -26,7 +27,7 @@
             android:id="@+id/day_edittext"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:hint="Enter Day"
+            android:hint="Day and Date ex. Monday 12/01"
             android:layout_weight="1"/>
 
         <Button

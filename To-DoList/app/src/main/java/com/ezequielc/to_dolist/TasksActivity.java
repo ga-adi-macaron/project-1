@@ -1,6 +1,5 @@
 package com.ezequielc.to_dolist;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -45,12 +44,17 @@ public class TasksActivity extends AppCompatActivity {
                 String taskEntry = mTaskEditText.getText().toString();
                 String descriptionEntry = mDescriptionEditText.getText().toString();
 
-                Tasks newTasks = new Tasks(taskEntry, descriptionEntry);
-                day.getTasks().add(newTasks);
+                // Shows an error message ONLY if Tasks field is blank
+                if (taskEntry.length() == 0) {
+                    mTaskEditText.setError("Please fill field!");
+                } else {
+                    Tasks newTasks = new Tasks(taskEntry, descriptionEntry);
+                    day.getTasks().add(newTasks);
 
-                mTaskEditText.setText("");
-                mDescriptionEditText.setText("");
-                mRecyclerView.getAdapter().notifyDataSetChanged();
+                    mTaskEditText.setText("");
+                    mDescriptionEditText.setText("");
+                    mRecyclerView.getAdapter().notifyDataSetChanged();
+                }
             }
         });
     }

@@ -7,7 +7,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 public class DayActivity extends AppCompatActivity {
     private EditText mEditText;
@@ -35,9 +34,15 @@ public class DayActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String dayEntry = mEditText.getText().toString();
-                Singleton.getInstance().addDay(new Day(dayEntry));
-                mEditText.setText("");
-                mRecyclerView.getAdapter().notifyDataSetChanged();
+
+                // Shows an error message for blank input
+                if (dayEntry.length() == 0) {
+                    mEditText.setError("Please fill field!");
+                } else {
+                    Singleton.getInstance().addDay(new Day(dayEntry));
+                    mEditText.setText("");
+                    mRecyclerView.getAdapter().notifyDataSetChanged();
+                }
             }
         });
     }
