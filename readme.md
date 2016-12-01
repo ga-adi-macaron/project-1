@@ -2,82 +2,25 @@
 
 #### Overview
 
-It's time to create your very first Android project - a to-do list app. This might seem intimidating at first, but you have the ability to break down what you see on the screen into easily identifiable parts. Learning to both design an app and implement your designs are crucial skills to being a successful Android developer.
+A basic To-Do app list. The main screen allows the user to create a generalized To-Do list with a name and description. This can be something like Groceries, Shopping, Homework. Each of these To-Do lists can then be opened in order to add specific errands to that To-Do list. Once a task is done the user can either long-click a specific item to delete it or check off multiple objects and remove them all with the “Remove Completed” button. If a user is done with an entire To-Do list they can just long click the To-Do list in order to delete it. Whenever the user is about to delete a note, a prompt dialog is opened up to confirm with the user that that is their intent.
 
-**You will be working individually for this project**. Think through your design carefully before you implement it in Android Studio. Test both the layout and functionality of each screen as you create them. Don't wait until the end!
+What to expect in future updates:
+-Currently the imageView has only a background color as a placeholder. Later down the line I want to incorporate icons for different types of To-Do lists.
+-Include persist data storage that will allow the user to store data after the app is closed. *Pretty important*
+- Allow user to edit To-Do list items, title and/or description.
+- Allow user to set alarm reminders.
+- Allow user to record and listen to voice memos.
 
----
 
-#### Requirements
 
-Your app must:
 
-- **Display a collection of to-do lists**
-- **Display items on each to-do list, including descriptions**
-- Allow the user to **create a new to-do list**
-- Allow the user to **Add items** to each to-do list
-- Allow the user to **remove items from a to-do list**
-- Allow the user to **remove an entire to-do list**
-- Use two custom Java objects to contain your data for each `ToDoList`, and the `ToDoItem`s in each `ToDoList`
-- Show an error message if invalid input is given (e.g. blank input)
-- Persist data (your `ToDoList`s) while the app is open using a **singleton**
-- Use either `ListView` or `RecyclerView` to show your `ToDoList`s and `ToDoItem`s. We recommend `RecyclerView`, but will accept `ListView` for this project.
-- Display correctly in both landscape and portrait orientations
 
-**Bonus:**
-
-- Allow the user to check off completed items
-- Allow the user to edit previously added items
-- Persist data when the app closes and is re-opened
-
----
-
-#### Code of Conduct
-
-As always, your app must adhere to General Assembly's [student code of conduct guidelines](../../../resources/guidelines/code-of-conduct.md).
-
-If you have questions about whether or not your work adheres to these guidelines, please speak with a member of your instructional team.
-
----
-
-#### Necessary Deliverables
-
-- A **git repository hosted on GitHub**, with frequent commits dating back to the **very beginning** of the project. Commit early, commit often.
-- **A ``readme.md`` file** describing what the app does, and any bugs that may exist
-- At least one screenshot of your home screen in the `readme.md`
-- Pictures of your prototypes in the git repository
-
----
-
-#### Suggested Ways to Get Started
-
-- Complete as much of the layout XML as possible before starting to write your logic
-- Use the Android API documentation - it is very thorough and provides useful code samples
-- Don’t hesitate to write throwaway code to solve short term problems
-- Write pseudocode before you write actual code (remember to think through the logic first!)
-
----
-
-### Useful Resources
-
-- [Android API Reference](http://developer.android.com/reference/packages.html)
-- [Android API Guides](http://developer.android.com/guide/index.html)
-
----
-
-#### Example Deliverable
-
-Below you can find an example of what the instructors' final product looks like. **Be creative with your own designs!**
 
 <p align="center">
-  <img src="screenshots/screenshot1.png" width="250">
-  <img src="screenshots/screenshot2.png" width="250">
-  <img src="screenshots/screenshot3.png" width="250">
-  <img src="screenshots/screenshot4.png" width="250">
+  <img src=“screenshots/Screenshot_20161021-144432.png" width="250">
+  <img src="screenshots/Screenshot_20161021-144508.png" width="250">
+  <img src="screenshots/Screenshot_20161021-144517.png" width="250">
+  <img src="screenshots/Screenshot_20161021-144538.png" width="250">
 </p>
 
----
 
-## Licensing
-1. All content is licensed under a CC­BY­NC­SA 4.0 license.
-2. All software code is licensed under GNU GPLv3. For commercial use or alternative licensing, please contact [legal@ga.co](mailto:legal@ga.co).
